@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<raConfiguration version="9">
+  <generalSettings>
+    <option key="#Board#" value="board.rzg3s_smarc"/>
+    <option key="CPU" value="RZG3S"/>
+    <option key="Core" value="CM33"/>
+    <option key="#TargetName#" value="R9A08G045S33GBG_CM33"/>
+    <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
+    <option key="#DeviceCommand#" value="R9A08G045S33GBG_CM33"/>
+    <option key="#RTOS#" value="_none"/>
+    <option key="#pinconfiguration#" value="R9A08G045S33GBG_CM33.pincfg"/>
+    <option key="#FSPVersion#" value="2.0.0"/>
+    <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##rzg3s_smarc##"/>
+    <option key="#SELECTED_TOOLCHAIN#" value="gcc-arm-embedded"/>
+    <option key="#ToolchainVersion#" value="10.3.1.20210824"/>
+  </generalSettings>
+  <raBspConfiguration>
+    <config id="config.bsp.rzg3s.R9A08G045S33GBG_CM33">
+      <property id="config.bsp.part_number" value="config.bsp.part_number.value"/>
+      <property id="config.bsp.rom_size_bytes" value="config.bsp.rom_size_bytes.value"/>
+      <property id="config.bsp.ram_size_bytes" value="config.bsp.ram_size_bytes.value"/>
+      <property id="config.bsp.package_style" value="config.bsp.package_style.value"/>
+      <property id="config.bsp.package_pins" value="config.bsp.package_pins.value"/>
+    </config>
+    <config id="config.bsp.rzg3s.fsp.cm33">
+      <property id="config.bsp.fsp.mcu.adc_c.min_adc.sampling_time" value="79"/>
+      <property id="config.bsp.fsp.mcu.adc_c.max_adc.sampling_time" value="255"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_rate_hz" value="8"/>
+      <property id="config.bsp.fsp.mcu.canfd.min_nominal_timeseg1" value="2"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_timeseg1" value="256"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_timeseg2" value="128"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_sync_jump_width" value="128"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_prescaler" value="1024"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_timeseg1" value="32"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_timeseg2" value="16"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_sync_jump_width" value="16"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_rxmb_number" value="32"/>
+      <property id="config.bsp.fsp.mcu.canfd.afl_rules" value="128"/>
+      <property id="config.bsp.fsp.mcu.canfd.afl_rules_each_chnl" value="64"/>
+      <property id="config.bsp.fsp.mcu.spi.max_bitrate" value="25000000"/>
+    </config>
+    <config id="config.bsp.rz">
+      <property id="config.bsp.common.secure_stack" value="0x800"/>
+      <property id="config.bsp.common.main" value="0x400"/>
+      <property id="config.bsp.common.heap" value="0x500"/>
+      <property id="config.bsp.common.vcc" value="3300"/>
+      <property id="config.bsp.common.checking" value="config.bsp.common.checking.disabled"/>
+      <property id="config.bsp.common.assert" value="config.bsp.common.assert.none"/>
+      <property id="config.bsp.common.error_log" value="config.bsp.common.error_log.none"/>
+      <property id="config.bsp.common.pfs_protect" value="config.bsp.common.pfs_protect.enabled"/>
+      <property id="config.bsp.common.c_runtime_init" value="config.bsp.common.c_runtime_init.enabled"/>
+    </config>
+  </raBspConfiguration>
+  <raClockConfiguration>
+    <node id="board.clock.osc.freq" option="board.clock.osc.freq.value"/>
+    <node id="board.clock.pll1" mul="1100000000" option="_edit"/>
+    <node id="board.clock.dummy1" option="board.clock.dummy1.freq"/>
+    <node id="board.clock.iclk.div" option="board.clock.iclk.div.1"/>
+    <node id="board.clock.iclk.display" option="board.clock.iclk.display.value"/>
+    <node id="board.clock.pll2_1600" mul="1600000000" option="_edit"/>
+    <node id="board.clock.dummy2" option="board.clock.dummy2.freq"/>
+    <node id="board.clock.pll2_1600.div1" option="board.clock.pll2_1600.div1.2"/>
+    <node id="board.clock.pll2_1600.div2" option="board.clock.pll2_1600.div2.8"/>
+    <node id="board.clock.p0clk.div" option="board.clock.p0clk.div.1"/>
+    <node id="board.clock.p0clk.display" option="board.clock.p0clk.display.value"/>
+    <node id="board.clock.pll2_1600.div3" option="board.clock.pll2_1600.div3.5"/>
+    <node id="board.clock.p4clk.display" option="board.clock.p4clk.display.value"/>
+    <node id="board.clock.pll2_1600.div4" option="board.clock.pll2_1600.div4.4"/>
+    <node id="board.clock.p5clk.display" option="board.clock.p5clk.display.value"/>
+    <node id="board.clock.pll2_1600.div5" option="board.clock.pll2_1600.div5.8"/>
+    <node id="board.clock.tsuclk.display" option="board.clock.tsuclk.display.value"/>
+    <node id="board.clock.pll2_1600.div6" option="board.clock.pll2_1600.div6.6"/>
+    <node id="board.clock.sd0clk.sel" option="board.clock.sd0clk.sel.266"/>
+    <node id="board.clock.sd0clk.div" option="board.clock.sd0clk.div.2"/>
+    <node id="board.clock.sd0clk.display" option="board.clock.sd0clk.display.value"/>
+    <node id="board.clock.sd1clk.sel" option="board.clock.sd1clk.sel.266"/>
+    <node id="board.clock.sd1clk.div" option="board.clock.sd1clk.div.2"/>
+    <node id="board.clock.sd1clk.display" option="board.clock.sd1clk.display.value"/>
+    <node id="board.clock.sd2clk.sel" option="board.clock.sd2clk.sel.266"/>
+    <node id="board.clock.sd2clk.div" option="board.clock.sd2clk.div.2"/>
+    <node id="board.clock.sd2clk.display" option="board.clock.sd2clk.display.value"/>
+    <node id="board.clock.pll3" mul="1600000000" option="_edit"/>
+    <node id="board.clock.dummy3" option="board.clock.dummy3.freq"/>
+    <node id="board.clock.pll3.div1" option="board.clock.pll3.div1.2"/>
+    <node id="board.clock.pll3.div2" option="board.clock.pll3.div2.4"/>
+    <node id="board.clock.m0clk.display" option="board.clock.m0clk.display.value"/>
+    <node id="board.clock.pll3.div3" option="board.clock.pll3.div3.4"/>
+    <node id="board.clock.p1clk.div" option="board.clock.p1clk.div.1"/>
+    <node id="board.clock.p1clk.display" option="board.clock.p1clk.display.value"/>
+    <node id="board.clock.pll3.div4" option="board.clock.pll3.div4.8"/>
+    <node id="board.clock.p2clk.div" option="board.clock.p2clk.div.1"/>
+    <node id="board.clock.p2clk.display" option="board.clock.p2clk.display.value"/>
+    <node id="board.clock.pll3.div5" option="board.clock.pll3.div5.4"/>
+    <node id="board.clock.p3clk.div" option="board.clock.p3clk.div.1"/>
+    <node id="board.clock.p3clk.display" option="board.clock.p3clk.display.value"/>
+    <node id="board.clock.pll3.div6" option="board.clock.pll3.div6.2"/>
+    <node id="board.clock.atclk.display" option="board.clock.atclk.display.value"/>
+    <node id="board.clock.pll3.div7" option="board.clock.pll3.div7.8"/>
+    <node id="board.clock.ztclk.display" option="board.clock.ztclk.display.value"/>
+    <node id="board.clock.pll3.div8" option="board.clock.pll3.div8.2"/>
+    <node id="board.clock.occlk.sel" option="board.clock.occlk.sel.266"/>
+    <node id="board.clock.occlk.div" option="board.clock.occlk.div.8"/>
+    <node id="board.clock.oc0clk.display" option="board.clock.oc0clk.display.value"/>
+    <node id="board.clock.pll3.div9" option="board.clock.pll3.div9.6"/>
+    <node id="board.clock.oc1clk.div" option="board.clock.oc1clk.div.2"/>
+    <node id="board.clock.oc1clk.display" option="board.clock.oc1clk.display.value"/>
+    <node id="board.clock.spiclk.sel" option="board.clock.spiclk.sel.400"/>
+    <node id="board.clock.spiclk.div" option="board.clock.spiclk.div.4"/>
+    <node id="board.clock.spi0clk.display" option="board.clock.spi0clk.display.value"/>
+    <node id="board.clock.spi1clk.div" option="board.clock.spi1clk.div.2"/>
+    <node id="board.clock.spi1clk.display" option="board.clock.spi1clk.display.value"/>
+    <node id="board.clock.osc.div1" option="board.clock.osc.div1.1000"/>
+    <node id="board.clock.pll4" option="board.clock.pll4.800"/>
+    <node id="board.clock.sel_pll4.sel" option="board.clock.sel_pll4.sel.0024"/>
+    <node id="board.clock.sel_pll4.div" option="board.clock.sel_pll4.div.2"/>
+    <node id="board.clock.s0clk.display" option="board.clock.s0clk.display.value"/>
+    <node id="board.clock.pll6" mul="500000000" option="_edit"/>
+    <node id="board.clock.dummy6" option="board.clock.dummy6.freq"/>
+    <node id="board.clock.pll6.div1" option="board.clock.pll6.div1.2"/>
+    <node id="board.clock.i2clk.div" option="board.clock.i2clk.div.1"/>
+    <node id="board.clock.i2clk.display" option="board.clock.i2clk.display.value"/>
+    <node id="board.clock.i3clk.div" option="board.clock.i3clk.div.1"/>
+    <node id="board.clock.i3clk.display" option="board.clock.i3clk.display.value"/>
+    <node id="board.clock.hpclk.display" option="board.clock.hpclk.display.value"/>
+    <node id="board.clock.osc.div2" option="board.clock.osc.div2.3"/>
+    <node id="board.clock.osc2.display" option="board.clock.osc2.display.value"/>
+  </raClockConfiguration>
+  <raComponentSelection>
+    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board Support Package Common Files</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_ioport" variant="" vendor="Renesas" version="2.0.0">
+      <description>I/O Port</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_xspi_qspi" variant="" vendor="Renesas" version="2.0.0">
+      <description>Quad Serial Peripheral Interface Flash on Expanded Serial Peripheral Interface</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="CMSIS" condition="" group="CMSIS5" subgroup="CoreM" variant="" vendor="Arm" version="5.9.0+fsp.2.0.0">
+      <description>Arm CMSIS Version 5 - Core (M)</description>
+      <originalPack>Arm.CMSIS5.5.9.0+fsp.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="rzg3s" subgroup="device" variant="R9A08G045S33GBG_CM33" vendor="Renesas" version="2.0.0">
+      <description>Board support package for R9A08G045S33GBG_CM33</description>
+      <originalPack>Renesas.RZG_mcu_rzg3s.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="rzg3s" subgroup="device" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board support package for RZG3S</description>
+      <originalPack>Renesas.RZG_mcu_rzg3s.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="rzg3s" subgroup="fsp" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board support package for RZ/G3S - FSP Data</description>
+      <originalPack>Renesas.RZG_mcu_rzg3s.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="Board" subgroup="rzg3s_smarc" variant="" vendor="Renesas" version="2.0.0">
+      <description>Evaluation Kit RZ/G3S Support Files (RZ/G3S)</description>
+      <originalPack>Renesas.RZG_board_rzg3s_smarc.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_riic_master" variant="" vendor="Renesas" version="2.0.0">
+      <description>I2C Master Interface</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+  </raComponentSelection>
+  <raElcConfiguration/>
+  <raIcuConfiguration/>
+  <raModuleConfiguration>
+    <module id="module.driver.ioport_on_ioport.0">
+      <property id="module.driver.ioport.name" value="g_ioport"/>
+      <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
+    </module>
+    <module id="module.driver.qspi_on_xspi_qspi.0">
+      <property id="module.driver.xspi_qspi.name" value="g_qspi0"/>
+      <property id="module.driver.xspi_qspi.unit" value="0"/>
+      <property id="module.driver.xspi_qspi.chip_select" value="module.driver.xspi_qspi.chip_select.cs0"/>
+      <property id="module.driver.xspi_qspi.spi_protocol" value="module.driver.xspi_qspi.spi_protocol.protocol_1s_1s_1s"/>
+      <property id="module.driver.xspi_qspi.address_bytes" value="module.driver.xspi_qspi.address_bytes.address_bytes_3"/>
+      <property id="module.driver.xspi_qspi.dummy_clocks" value="module.driver.xspi_qspi.dummy_clocks.dummy_clocks_0"/>
+      <property id="module.driver.xspi_qspi.prefetch_function" value="module.driver.xspi_qspi.prefetch_function.prefetch_function_enable"/>
+      <property id="module.driver.xspi_qspi.page_program_command" value="0x02"/>
+      <property id="module.driver.xspi_qspi.read_command" value="0x03"/>
+      <property id="module.driver.xspi_qspi.write_enable_command" value="0x06"/>
+      <property id="module.driver.xspi_qspi.status_command" value="0x05"/>
+      <property id="module.driver.xspi_qspi.write_status_bit" value="0"/>
+      <property id="module.driver.xspi_qspi.sector_erase_command" value="0x20"/>
+      <property id="module.driver.xspi_qspi.sector_erase_size" value="4096"/>
+      <property id="module.driver.xspi_qspi.block_erase_command" value="0xD8"/>
+      <property id="module.driver.xspi_qspi.block_erase_size" value="65536"/>
+      <property id="module.driver.xspi_qspi.block_erase_32kb_command" value="0x52"/>
+      <property id="module.driver.xspi_qspi.block_erase_32kb_size" value="32768"/>
+      <property id="module.driver.xspi_qspi.chip_erase_command" value="0xC7"/>
+      <property id="module.driver.xspi_qspi.xip_enter_command" value="0xAA"/>
+      <property id="module.driver.xspi_qspi.xip_exit_command" value="0x55"/>
+      <property id="module.driver.xspi_qspi.command_to_command_interval_clocks" value="module.driver.xspi_qspi.command_to_command_interval_clocks.7_cycles"/>
+      <property id="module.driver.xspi_qspi.cs_pullup_lag" value="module.driver.xspi_qspi.cs_pullup_lag.no_extension"/>
+      <property id="module.driver.xspi_qspi.cs_pulldown_lead" value="module.driver.xspi_qspi.cs_pulldown_lead.no_extension"/>
+      <property id="module.driver.xspi_qspi.stop_on_close" value="module.driver.xspi_qspi.stop_on_close.false"/>
+      <property id="module.driver.xspi_qspi.pre_init" value="xspi_pre_init"/>
+      <property id="module.driver.xspi_qspi.post_init" value="xspi_post_init"/>
+    </module>
+    <module id="module.driver.i2c_on_iic_master.1144765758">
+      <property id="module.driver.i2c_master.name" value="g_i2c_master"/>
+      <property id="module.driver.i2c_master.channel" value="0"/>
+      <property id="module.driver.i2c_master.rate" value="module.driver.i2c_master.rate.rate_fast"/>
+      <property id="module.driver.i2c_master.rise_time_ns" value="120"/>
+      <property id="module.driver.i2c_master.fall_time_ns" value="120"/>
+      <property id="module.driver.i2c_master.duty" value="50"/>
+      <property id="module.driver.i2c_master.noise_filter_stages" value="1"/>
+      <property id="module.driver.i2c_master.slave" value="0x1D"/>
+      <property id="module.driver.i2c_master.addr_mode" value="module.driver.i2c_master.addr_mode.addr_mode_7bit"/>
+      <property id="module.driver.i2c_master.timeout_mode" value="module.driver.i2c_master.timeout_mode.short_mode"/>
+      <property id="module.driver.i2c_master.timeout_scl_low" value="module.driver.i2c_master.timeout_scl_low.enabled"/>
+      <property id="module.driver.i2c_master.p_callback" value="i2c_master_callback"/>
+      <property id="module.driver.i2c_master.ipl" value="12"/>
+    </module>
+    <context id="_hal.0">
+      <stack module="module.driver.ioport_on_ioport.0"/>
+      <stack module="module.driver.qspi_on_xspi_qspi.0"/>
+      <stack module="module.driver.i2c_on_iic_master.1144765758"/>
+    </context>
+    <config id="config.driver.xspi_qspi">
+      <property id="config.driver.xspi_qspi.param_checking_enable" value="config.driver.xspi_qspi.param_checking_enable.bsp"/>
+    </config>
+    <config id="config.driver.riic_master">
+      <property id="config.driver.riic_master.param_checking_enable" value="config.driver.riic_master.param_checking_enable.bsp"/>
+      <property id="config.driver.riic_master.dmac_enable" value="config.driver.riic_master.dmac_enable.disabled"/>
+      <property id="config.driver.riic_master.addr_mode_10_bit_enable" value="config.driver.riic_master.addr_mode_10_bit_enable.disabled"/>
+    </config>
+    <config id="config.driver.ioport">
+      <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
+    </config>
+  </raModuleConfiguration>
+  <raPinConfiguration>
+    <pincfg active="true" name="RZG3S-SMARC.pincfg" selected="true" symbol="g_bsp_pin_cfg">
+      <configSetting altId="riic0.mode.custom.free" configurationId="riic0.mode"/>
+      <configSetting altId="riic0.riic0_scl.riic0_scl" configurationId="riic0.riic0_scl"/>
+      <configSetting altId="riic0.riic0_sda.riic0_sda" configurationId="riic0.riic0_sda"/>
+      <configSetting altId="riic0_scl.riic0.riic0_scl" configurationId="riic0_scl"/>
+      <configSetting altId="riic0_sda.riic0.riic0_sda" configurationId="riic0_sda"/>
+    </pincfg>
+    <pincfg active="false" name="R9A08G045S33GBG_CM33.pincfg" selected="false" symbol=""/>
+  </raPinConfiguration>
+</raConfiguration>

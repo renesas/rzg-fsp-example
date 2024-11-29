@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<raConfiguration version="9">
+  <generalSettings>
+    <option key="#Board#" value="board.rzg2l_smarc"/>
+    <option key="CPU" value="RZG2L"/>
+    <option key="#TargetName#" value="R9A07G044L23GBG_CM33"/>
+    <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
+    <option key="#DeviceCommand#" value="R9A07G044L23GBG_CM33"/>
+    <option key="#RTOS#" value="_none"/>
+    <option key="#pinconfiguration#" value="R9A07G044L23GBG_CM33.pincfg"/>
+    <option key="#FSPVersion#" value="2.0.0"/>
+    <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##rzg2l_smarc##"/>
+    <option key="#SELECTED_TOOLCHAIN#" value="gcc-arm-embedded"/>
+    <option key="#ToolchainVersion#" value="9.2.1.20191025"/>
+  </generalSettings>
+  <raBspConfiguration>
+    <config id="config.bsp.rzg2l.R9A07G044L23GBG_CM33">
+      <property id="config.bsp.part_number" value="config.bsp.part_number.value"/>
+      <property id="config.bsp.rom_size_bytes" value="config.bsp.rom_size_bytes.value"/>
+      <property id="config.bsp.ram_size_bytes" value="config.bsp.ram_size_bytes.value"/>
+      <property id="config.bsp.package_style" value="config.bsp.package_style.value"/>
+      <property id="config.bsp.package_pins" value="config.bsp.package_pins.value"/>
+    </config>
+    <config id="config.bsp.rzg2l">
+      <property id="config.bsp.series" value="config.bsp.series.value"/>
+    </config>
+    <config id="config.bsp.rzg2l.fsp">
+      <property id="config.bsp.fsp.mcu.adc_c.min_adc.sampling_time" value="6"/>
+      <property id="config.bsp.fsp.mcu.adc_c.max_adc.sampling_time" value="2800"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_rate_hz" value="4"/>
+      <property id="config.bsp.fsp.mcu.canfd.min_nominal_timeseg1" value="4"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_timeseg1" value="128"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_timeseg2" value="32"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_sync_jump_width" value="32"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_prescaler" value="256"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_timeseg1" value="16"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_timeseg2" value="8"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_sync_jump_width" value="8"/>
+      <property id="config.bsp.fsp.mcu.canfd.afl_rules" value="128"/>
+      <property id="config.bsp.fsp.mcu.canfd.afl_rules_each_chnl" value="64"/>
+      <property id="config.bsp.fsp.mcu.spi.max_bitrate" value="25000000"/>
+    </config>
+    <config id="config.bsp.rz">
+      <property id="config.bsp.common.secure_stack" value="0x200"/>
+      <property id="config.bsp.common.main" value="0x200"/>
+      <property id="config.bsp.common.heap" value="0"/>
+      <property id="config.bsp.common.vcc" value="3300"/>
+      <property id="config.bsp.common.checking" value="config.bsp.common.checking.disabled"/>
+      <property id="config.bsp.common.assert" value="config.bsp.common.assert.none"/>
+      <property id="config.bsp.common.error_log" value="config.bsp.common.error_log.none"/>
+      <property id="config.bsp.common.pfs_protect" value="config.bsp.common.pfs_protect.enabled"/>
+      <property id="config.bsp.common.c_runtime_init" value="config.bsp.common.c_runtime_init.enabled"/>
+    </config>
+  </raBspConfiguration>
+  <raClockConfiguration>
+    <node id="board.clock.osc.freq" mul="24000000" option="_edit"/>
+    <node id="board.clock.iclk.freq" mul="1200000000" option="_edit"/>
+    <node id="board.clock.i2clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.gclk.freq" mul="500000000" option="_edit"/>
+    <node id="board.clock.s0clk.freq" mul="12000" option="_edit"/>
+    <node id="board.clock.spi0clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.spi1clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.sd0clk.freq" mul="533000000" option="_edit"/>
+    <node id="board.clock.sd1clk.freq" mul="533000000" option="_edit"/>
+    <node id="board.clock.m0clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.m1clk.freq" mul="3000000000" option="_edit"/>
+    <node id="board.clock.m2clk.freq" mul="266500000" option="_edit"/>
+    <node id="board.clock.m3clk.freq" mul="3000000000" option="_edit"/>
+    <node id="board.clock.m4clk.freq" mul="16656000" option="_edit"/>
+    <node id="board.clock.hpclk.freq" mul="250000000" option="_edit"/>
+    <node id="board.clock.tsuclk.freq" mul="80000000" option="_edit"/>
+    <node id="board.clock.ztclk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.p0clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.p1clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.p2clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.atclk.freq" mul="400000000" option="_edit"/>
+  </raClockConfiguration>
+  <raComponentSelection>
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="device" variant="R9A07G044L23GBG_CM33" vendor="Renesas" version="2.0.0">
+      <description>Board support package for R9A07G044L23GBG_CM33</description>
+      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="device" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board support package for RZG2L</description>
+      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="fsp" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board support package for RZ/G2L (RZ/G2L) - FSP Data</description>
+      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board Support Package Common Files</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_ioport" variant="" vendor="Renesas" version="2.0.0">
+      <description>I/O Port</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_rspi" variant="" vendor="Renesas" version="2.0.0">
+      <description>Serial Peripheral Interface</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="CMSIS" condition="" group="CMSIS5" subgroup="CoreM" variant="" vendor="Arm" version="5.9.0+fsp.2.0.0">
+      <description>Arm CMSIS Version 5 - Core (M)</description>
+      <originalPack>Arm.CMSIS5.5.9.0+fsp.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="Board" subgroup="rzg2l_smarc" variant="" vendor="Renesas" version="2.0.0">
+      <description>Evaluation Kit RZ/G2L Support Files (RZ/G2L)</description>
+      <originalPack>Renesas.RZG_board_rzg2l_smarc.2.0.0.pack</originalPack>
+    </component>
+  </raComponentSelection>
+  <raElcConfiguration/>
+  <raIcuConfiguration/>
+  <raModuleConfiguration>
+    <module id="module.driver.ioport_on_ioport.0">
+      <property id="module.driver.ioport.name" value="g_ioport"/>
+      <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
+    </module>
+    <module id="module.driver.spi_on_rspi.1504698728">
+      <property id="module.driver.spi.name" value="g_spi_master"/>
+      <property id="module.driver.spi.channel" value="0"/>
+      <property id="module.driver.spi.operating_mode" value="module.driver.spi.operating_mode.mode_master"/>
+      <property id="module.driver.spi.clk_phase" value="module.driver.spi.clk_phase.clk_phase_edge_even"/>
+      <property id="module.driver.spi.clk_polarity" value="module.driver.spi.clk_polarity.clk_polarity_high"/>
+      <property id="module.driver.spi.mode_fault" value="module.driver.spi.mode_fault.mode_fault_error_disable"/>
+      <property id="module.driver.spi.bit_order" value="module.driver.spi.bit_order.bit_order_msb_first"/>
+      <property id="module.driver.spi.ssl_polarity" value="module.driver.spi.ssl_polarity.low"/>
+      <property id="module.driver.spi.mosi_idle_value_fixing" value="module.driver.spi.mosi_idle_value_fixing.disable"/>
+      <property id="module.driver.spi.bitrate" value="1000000"/>
+      <property id="module.driver.spi.spck_delay" value="module.driver.spi.spck_delay.one"/>
+      <property id="module.driver.spi.ssl_negation_delay" value="module.driver.spi.ssl_negation_delay.one"/>
+      <property id="module.driver.spi.next_access_delay" value="module.driver.spi.next_access_delay.one"/>
+      <property id="module.driver.spi.ssl_level_keep" value="module.driver.spi.ssl_level_keep.disable"/>
+      <property id="module.driver.spi.receiver_fifo_trigger_level" value="module.driver.spi.receiver_fifo_trigger_level.thirty_two"/>
+      <property id="module.driver.spi.transmitter_fifo_trigger_level" value="module.driver.spi.transmitter_fifo_trigger_level.eight"/>
+      <property id="module.driver.spi.p_callback" value="spi_master_callback"/>
+      <property id="module.driver.spi.rxi_enable" value="board.icu.common.irq.enabled"/>
+      <property id="module.driver.spi.rxi_ipl" value="8"/>
+      <property id="module.driver.spi.txi_enable" value="board.icu.common.irq.enabled"/>
+      <property id="module.driver.spi.txi_ipl" value="8"/>
+      <property id="module.driver.spi.eri_ipl" value="8"/>
+    </module>
+    <module id="module.driver.spi_on_rspi.1099775501">
+      <property id="module.driver.spi.name" value="g_spi_slave"/>
+      <property id="module.driver.spi.channel" value="1"/>
+      <property id="module.driver.spi.operating_mode" value="module.driver.spi.operating_mode.mode_slave"/>
+      <property id="module.driver.spi.clk_phase" value="module.driver.spi.clk_phase.clk_phase_edge_even"/>
+      <property id="module.driver.spi.clk_polarity" value="module.driver.spi.clk_polarity.clk_polarity_high"/>
+      <property id="module.driver.spi.mode_fault" value="module.driver.spi.mode_fault.mode_fault_error_disable"/>
+      <property id="module.driver.spi.bit_order" value="module.driver.spi.bit_order.bit_order_msb_first"/>
+      <property id="module.driver.spi.ssl_polarity" value="module.driver.spi.ssl_polarity.low"/>
+      <property id="module.driver.spi.mosi_idle_value_fixing" value="module.driver.spi.mosi_idle_value_fixing.disable"/>
+      <property id="module.driver.spi.bitrate" value="1000000"/>
+      <property id="module.driver.spi.spck_delay" value="module.driver.spi.spck_delay.one"/>
+      <property id="module.driver.spi.ssl_negation_delay" value="module.driver.spi.ssl_negation_delay.one"/>
+      <property id="module.driver.spi.next_access_delay" value="module.driver.spi.next_access_delay.one"/>
+      <property id="module.driver.spi.ssl_level_keep" value="module.driver.spi.ssl_level_keep.disable"/>
+      <property id="module.driver.spi.receiver_fifo_trigger_level" value="module.driver.spi.receiver_fifo_trigger_level.thirty_two"/>
+      <property id="module.driver.spi.transmitter_fifo_trigger_level" value="module.driver.spi.transmitter_fifo_trigger_level.eight"/>
+      <property id="module.driver.spi.p_callback" value="spi_slave_callback"/>
+      <property id="module.driver.spi.rxi_enable" value="board.icu.common.irq.enabled"/>
+      <property id="module.driver.spi.rxi_ipl" value="8"/>
+      <property id="module.driver.spi.txi_enable" value="board.icu.common.irq.enabled"/>
+      <property id="module.driver.spi.txi_ipl" value="8"/>
+      <property id="module.driver.spi.eri_ipl" value="8"/>
+    </module>
+    <context id="_hal.0">
+      <stack module="module.driver.ioport_on_ioport.0"/>
+      <stack module="module.driver.spi_on_rspi.1504698728"/>
+      <stack module="module.driver.spi_on_rspi.1099775501"/>
+    </context>
+    <config id="config.driver.rspi">
+      <property id="config.driver.rspi.param_checking_enable" value="config.driver.rspi.param_checking_enable.bsp"/>
+      <property id="config.driver.rspi.dmac_enable" value="config.driver.rspi.dmac_enable.disabled"/>
+    </config>
+    <config id="config.driver.ioport">
+      <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
+    </config>
+  </raModuleConfiguration>
+  <raPinConfiguration>
+    <pincfg active="true" name="RZG2L-SMARC.pincfg" selected="true" symbol="g_bsp_pin_cfg">
+      <configSetting altId="p43_0.rspi0.rspi0_ck" configurationId="p43_0"/>
+      <configSetting altId="p43_0.gpio_mode.gpio_mode_peripheral" configurationId="p43_0.gpio_mode"/>
+      <configSetting altId="p43_1.rspi0.rspi0_mosi" configurationId="p43_1"/>
+      <configSetting altId="p43_1.gpio_mode.gpio_mode_peripheral" configurationId="p43_1.gpio_mode"/>
+      <configSetting altId="p43_2.rspi0.rspi0_miso" configurationId="p43_2"/>
+      <configSetting altId="p43_2.gpio_mode.gpio_mode_peripheral" configurationId="p43_2.gpio_mode"/>
+      <configSetting altId="p43_3.rspi0.rspi0_ssl" configurationId="p43_3"/>
+      <configSetting altId="p43_3.gpio_mode.gpio_mode_peripheral" configurationId="p43_3.gpio_mode"/>
+      <configSetting altId="p44_0.rspi1.rspi1_ck" configurationId="p44_0"/>
+      <configSetting altId="p44_0.gpio_mode.gpio_mode_peripheral" configurationId="p44_0.gpio_mode"/>
+      <configSetting altId="p44_1.rspi1.rspi1_mosi" configurationId="p44_1"/>
+      <configSetting altId="p44_1.gpio_mode.gpio_mode_peripheral" configurationId="p44_1.gpio_mode"/>
+      <configSetting altId="p44_2.rspi1.rspi1_miso" configurationId="p44_2"/>
+      <configSetting altId="p44_2.gpio_mode.gpio_mode_peripheral" configurationId="p44_2.gpio_mode"/>
+      <configSetting altId="p44_3.rspi1.rspi1_ssl" configurationId="p44_3"/>
+      <configSetting altId="p44_3.gpio_mode.gpio_mode_peripheral" configurationId="p44_3.gpio_mode"/>
+      <configSetting altId="rspi0.mode.custom.free" configurationId="rspi0.mode"/>
+      <configSetting altId="rspi0.rspi0_ck.p43_0" configurationId="rspi0.rspi0_ck"/>
+      <configSetting altId="rspi0.rspi0_miso.p43_2" configurationId="rspi0.rspi0_miso"/>
+      <configSetting altId="rspi0.rspi0_mosi.p43_1" configurationId="rspi0.rspi0_mosi"/>
+      <configSetting altId="rspi0.rspi0_ssl.p43_3" configurationId="rspi0.rspi0_ssl"/>
+      <configSetting altId="rspi1.mode.custom.free" configurationId="rspi1.mode"/>
+      <configSetting altId="rspi1.rspi1_ck.p44_0" configurationId="rspi1.rspi1_ck"/>
+      <configSetting altId="rspi1.rspi1_miso.p44_2" configurationId="rspi1.rspi1_miso"/>
+      <configSetting altId="rspi1.rspi1_mosi.p44_1" configurationId="rspi1.rspi1_mosi"/>
+      <configSetting altId="rspi1.rspi1_ssl.p44_3" configurationId="rspi1.rspi1_ssl"/>
+    </pincfg>
+    <pincfg active="false" name="R9A07G044L23GBG_CM33.pincfg" selected="false" symbol=""/>
+  </raPinConfiguration>
+</raConfiguration>

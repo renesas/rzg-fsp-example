@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<raConfiguration version="9">
+  <generalSettings>
+    <option key="#Board#" value="board.rzg2l_smarc"/>
+    <option key="CPU" value="RZG2L"/>
+    <option key="#TargetName#" value="R9A07G044L23GBG_CM33"/>
+    <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
+    <option key="#DeviceCommand#" value="R9A07G044L23GBG_CM33"/>
+    <option key="#RTOS#" value="_none"/>
+    <option key="#pinconfiguration#" value="R9A07G044L23GBG_CM33.pincfg"/>
+    <option key="#FSPVersion#" value="2.0.0"/>
+    <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##rzg2l_smarc##|Renesas##BSP##Board##rzg2ul_smarc##|Renesas##BSP##Board##rzg2lc_smarc##"/>
+    <option key="#SELECTED_TOOLCHAIN#" value="gcc-arm-embedded"/>
+    <option key="#ToolchainVersion#" value="9.2.1.20191025"/>
+  </generalSettings>
+  <raBspConfiguration>
+    <config id="config.bsp.rzg2l.R9A07G044L23GBG_CM33">
+      <property id="config.bsp.part_number" value="config.bsp.part_number.value"/>
+      <property id="config.bsp.rom_size_bytes" value="config.bsp.rom_size_bytes.value"/>
+      <property id="config.bsp.ram_size_bytes" value="config.bsp.ram_size_bytes.value"/>
+      <property id="config.bsp.package_style" value="config.bsp.package_style.value"/>
+      <property id="config.bsp.package_pins" value="config.bsp.package_pins.value"/>
+    </config>
+    <config id="config.bsp.rzg2l">
+      <property id="config.bsp.series" value="config.bsp.series.value"/>
+    </config>
+    <config id="config.bsp.rzg2l.fsp">
+      <property id="config.bsp.fsp.mcu.adc_c.min_adc.sampling_time" value="6"/>
+      <property id="config.bsp.fsp.mcu.adc_c.max_adc.sampling_time" value="2800"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_rate_hz" value="4"/>
+      <property id="config.bsp.fsp.mcu.canfd.min_nominal_timeseg1" value="4"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_timeseg1" value="128"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_timeseg2" value="32"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_nominal_sync_jump_width" value="32"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_prescaler" value="256"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_timeseg1" value="16"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_timeseg2" value="8"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_data_sync_jump_width" value="8"/>
+      <property id="config.bsp.fsp.mcu.canfd.afl_rules" value="128"/>
+      <property id="config.bsp.fsp.mcu.canfd.afl_rules_each_chnl" value="64"/>
+      <property id="config.bsp.fsp.mcu.spi.max_bitrate" value="25000000"/>
+    </config>
+    <config id="config.bsp.rz">
+      <property id="config.bsp.common.secure_stack" value="0x200"/>
+      <property id="config.bsp.common.main" value="0x200"/>
+      <property id="config.bsp.common.heap" value="0"/>
+      <property id="config.bsp.common.vcc" value="3300"/>
+      <property id="config.bsp.common.checking" value="config.bsp.common.checking.disabled"/>
+      <property id="config.bsp.common.assert" value="config.bsp.common.assert.none"/>
+      <property id="config.bsp.common.error_log" value="config.bsp.common.error_log.none"/>
+      <property id="config.bsp.common.pfs_protect" value="config.bsp.common.pfs_protect.enabled"/>
+      <property id="config.bsp.common.c_runtime_init" value="config.bsp.common.c_runtime_init.enabled"/>
+    </config>
+  </raBspConfiguration>
+  <raClockConfiguration>
+    <node id="board.clock.osc.freq" mul="24000000" option="_edit"/>
+    <node id="board.clock.iclk.freq" mul="1200000000" option="_edit"/>
+    <node id="board.clock.i2clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.gclk.freq" mul="500000000" option="_edit"/>
+    <node id="board.clock.s0clk.freq" mul="12000" option="_edit"/>
+    <node id="board.clock.spi0clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.spi1clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.sd0clk.freq" mul="533000000" option="_edit"/>
+    <node id="board.clock.sd1clk.freq" mul="533000000" option="_edit"/>
+    <node id="board.clock.m0clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.m1clk.freq" mul="3000000000" option="_edit"/>
+    <node id="board.clock.m2clk.freq" mul="266500000" option="_edit"/>
+    <node id="board.clock.m3clk.freq" mul="3000000000" option="_edit"/>
+    <node id="board.clock.m4clk.freq" mul="16656000" option="_edit"/>
+    <node id="board.clock.hpclk.freq" mul="250000000" option="_edit"/>
+    <node id="board.clock.tsuclk.freq" mul="80000000" option="_edit"/>
+    <node id="board.clock.ztclk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.p0clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.p1clk.freq" mul="200000000" option="_edit"/>
+    <node id="board.clock.p2clk.freq" mul="100000000" option="_edit"/>
+    <node id="board.clock.atclk.freq" mul="400000000" option="_edit"/>
+  </raClockConfiguration>
+  <raComponentSelection>
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="device" variant="R9A07G044L23GBG_CM33" vendor="Renesas" version="2.0.0">
+      <description>Board support package for R9A07G044L23GBG_CM33</description>
+      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="device" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board support package for RZG2L</description>
+      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="fsp" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board support package for RZ/G2L (RZ/G2L) - FSP Data</description>
+      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="2.0.0">
+      <description>Board Support Package Common Files</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_gtm" variant="" vendor="Renesas" version="2.0.0">
+      <description>General Timer</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_ioport" variant="" vendor="Renesas" version="2.0.0">
+      <description>I/O Port</description>
+      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="CMSIS" condition="" group="CMSIS5" subgroup="CoreM" variant="" vendor="Arm" version="5.9.0+fsp.2.0.0">
+      <description>Arm CMSIS Version 5 - Core (M)</description>
+      <originalPack>Arm.CMSIS5.5.9.0+fsp.2.0.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="BSP" condition="" group="Board" subgroup="rzg2l_smarc" variant="" vendor="Renesas" version="2.0.0">
+      <description>Evaluation Kit RZ/G2L Support Files (RZ/G2L)</description>
+      <originalPack>Renesas.RZG_board_rzg2l_smarc.2.0.0.pack</originalPack>
+    </component>
+  </raComponentSelection>
+  <raElcConfiguration/>
+  <raIcuConfiguration/>
+  <raModuleConfiguration>
+    <module id="module.driver.ioport_on_ioport.0">
+      <property id="module.driver.ioport.name" value="g_ioport"/>
+      <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
+    </module>
+    <module id="module.driver.timer_on_gtm.1195204736">
+      <property id="module.driver.timer.name" value="g_timer_one_shot"/>
+      <property id="module.driver.timer.channel" value="enum.mcu.gtm.channels.2"/>
+      <property id="module.driver.timer.mode" value="module.driver.timer.mode.mode_one_shot"/>
+      <property id="module.driver.timer.period" value="20000"/>
+      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_raw_counts"/>
+      <property id="module.driver.timer.count_source" value="module.driver.timer.count_source.clock_p0clk"/>
+      <property id="module.driver.timer.p_callback" value="one_shot_timer_callback"/>
+      <property id="module.driver.timer.ipl" value="20"/>
+      <property id="module.driver.timer.int.generateatstart" value="module.driver.timer.int.generateatstart.0"/>
+      <property id="module.driver.timer.direction" value="module.driver.timer.direction.0"/>
+    </module>
+    <module id="module.driver.timer_on_gtm.1673581325">
+      <property id="module.driver.timer.name" value="g_timer_periodic"/>
+      <property id="module.driver.timer.channel" value="enum.mcu.gtm.channels.1"/>
+      <property id="module.driver.timer.mode" value="module.driver.timer.mode.mode_periodic"/>
+      <property id="module.driver.timer.period" value="2000"/>
+      <property id="module.driver.timer.unit" value="module.driver.timer.unit.unit_period_raw_counts"/>
+      <property id="module.driver.timer.count_source" value="module.driver.timer.count_source.clock_p0clk"/>
+      <property id="module.driver.timer.p_callback" value="periodic_timer_callback"/>
+      <property id="module.driver.timer.ipl" value="20"/>
+      <property id="module.driver.timer.int.generateatstart" value="module.driver.timer.int.generateatstart.0"/>
+      <property id="module.driver.timer.direction" value="module.driver.timer.direction.0"/>
+    </module>
+    <context id="_hal.0">
+      <stack module="module.driver.ioport_on_ioport.0"/>
+      <stack module="module.driver.timer_on_gtm.1195204736"/>
+      <stack module="module.driver.timer_on_gtm.1673581325"/>
+    </context>
+    <config id="config.driver.gtm">
+      <property id="config.driver.gtm.param_checking_enable" value="config.driver.gtm.param_checking_enable.bsp"/>
+    </config>
+    <config id="config.driver.ioport">
+      <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
+    </config>
+  </raModuleConfiguration>
+  <raPinConfiguration>
+    <pincfg active="true" name="RZG2L-SMARC.pincfg" selected="true" symbol="g_bsp_pin_cfg">
+      <configSetting altId="p43_2.output.low" configurationId="p43_2"/>
+      <configSetting altId="p43_2.gpio_mode.gpio_mode_out.low" configurationId="p43_2.gpio_mode"/>
+    </pincfg>
+    <pincfg active="false" name="R9A07G044L23GBG_CM33.pincfg" selected="false" symbol=""/>
+  </raPinConfiguration>
+</raConfiguration>
