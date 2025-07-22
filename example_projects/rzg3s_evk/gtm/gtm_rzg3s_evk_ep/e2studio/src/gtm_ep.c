@@ -2,25 +2,11 @@
  * File Name    : gtm_ep.c
  * Description  : Contains data structures and functions used in gtm_ep.c.
  **********************************************************************************************************************/
-/***********************************************************************************************************************
- * Copyright 2023 Renesas Electronics Corporation and/or its affiliates.  All Rights Reserved.
- *
- * This software and documentation are supplied by Renesas Electronics Corporation and/or its affiliates and may only
- * be used with products of Renesas Electronics Corp. and its affiliates ("Renesas").  No other uses are authorized.
- * Renesas products are sold pursuant to Renesas terms and conditions of sale.  Purchasers are solely responsible for
- * the selection and use of Renesas products and Renesas assumes no liability.  No license, express or implied, to any
- * intellectual property right is granted by Renesas.  This software is protected under all applicable laws, including
- * copyright laws. Renesas reserves the right to change or discontinue this software and/or this documentation.
- * THE SOFTWARE AND DOCUMENTATION IS DELIVERED TO YOU "AS IS," AND RENESAS MAKES NO REPRESENTATIONS OR WARRANTIES, AND
- * TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW, DISCLAIMS ALL WARRANTIES, WHETHER EXPLICITLY OR IMPLICITLY,
- * INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT, WITH RESPECT TO THE
- * SOFTWARE OR DOCUMENTATION.  RENESAS SHALL HAVE NO LIABILITY ARISING OUT OF ANY SECURITY VULNERABILITY OR BREACH.
- * TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL RENESAS BE LIABLE TO YOU IN CONNECTION WITH THE SOFTWARE OR
- * DOCUMENTATION (OR ANY PERSON OR ENTITY CLAIMING RIGHTS DERIVED FROM YOU) FOR ANY LOSS, DAMAGES, OR CLAIMS WHATSOEVER,
- * INCLUDING, WITHOUT LIMITATION, ANY DIRECT, CONSEQUENTIAL, SPECIAL, INDIRECT, PUNITIVE, OR INCIDENTAL DAMAGES; ANY
- * LOST PROFITS, OTHER ECONOMIC DAMAGE, PROPERTY DAMAGE, OR PERSONAL INJURY; AND EVEN IF RENESAS HAS BEEN ADVISED OF THE
- * POSSIBILITY OF SUCH LOSS, DAMAGES, CLAIMS OR COSTS.
- **********************************************************************************************************************/
+/*
+ * Copyright (c) 2023 Renesas Electronics Corporation and/or its affiliates
+ * 
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
 #include "common_utils.h"
 #include "gtm_ep.h"
@@ -33,6 +19,7 @@
 extern bsp_leds_t g_bsp_leds;
 extern volatile uint8_t g_periodic_timer_flag ;
 extern volatile uint32_t g_error_flag ;
+
 /*******************************************************************************************************************//**
  * @brief       This functions initializes GTM module.
  * @param[IN]   None
@@ -43,7 +30,7 @@ fsp_err_t gtm_init(void)
 {
     fsp_err_t err = FSP_SUCCESS;     // Error status
 
-    /* Open Timer0 in One Shot Mode */
+    /* Open Timer 2 in One Shot Mode */
     err = R_GTM_Open(&g_timer_one_shot_ctrl, &g_timer_one_shot_cfg);
     /* Handle error */
     if (FSP_SUCCESS != err)
@@ -52,12 +39,12 @@ fsp_err_t gtm_init(void)
         return err;
     }
 
-    /* Open Timer1 in Periodic mode */
+    /* Open Timer 1 in Periodic mode */
     err = R_GTM_Open(&g_timer_periodic_ctrl, &g_timer_periodic_cfg);
     /* Handle error */
     if (FSP_SUCCESS != err)
     {
-        /* Close Timer0 in One Shot Mode */
+        /* Close Timer 2 in One Shot Mode */
         if ( (FSP_SUCCESS != R_GTM_Close(&g_timer_one_shot_ctrl)))
         {
             APP_ERR_PRINT ("\r\nOne shot timer close failed.\r\nRestart the Application\r\n");
@@ -77,8 +64,9 @@ fsp_err_t gtm_start_oneshot_timer(void)
 {
     fsp_err_t err = FSP_SUCCESS;
 
-    /* Start Timer0 in one-shot mode */
+    /* Start Timer 2 in one-shot mode */
     err = R_GTM_Start(&g_timer_one_shot_ctrl);
+    
     /* Handle error */
     if (FSP_SUCCESS != err)
     {
@@ -110,6 +98,7 @@ void one_shot_timer_callback(timer_callback_args_t *p_args)
         {
             /* Start the timer in periodic mode only if the timer is in stopped state */
             err = R_GTM_Start(&g_timer_periodic_ctrl);
+
             /* Handle error */
             if (FSP_SUCCESS != err)
             {
@@ -118,7 +107,7 @@ void one_shot_timer_callback(timer_callback_args_t *p_args)
             }
             else
             {
-                g_periodic_timer_flag = SET_FLAG;   //Set the flag since timer1 is started in periodic mode
+                g_periodic_timer_flag = SET_FLAG;   //Set the flag since Timer 1 is started in periodic mode
             }
         }
         else

@@ -1,25 +1,29 @@
 FSP Configuration
   Board "RZ/G3S Evaluation Kit (SMARC)"
-  R9A08G045S33GBG(CM33)
+  R9A08G045S33GBG(Cortex-M33)
     part_number: R9A08G045S33GBG_CM33
     rom_size_bytes: 0
     ram_size_bytes: 131072
     package_style: LFBGA
     package_pins: 359
     
-  RZG3S(CM33)
+  RZG3S(Cortex-M33)
+    Launch CA55(core0): Disabled
+    Launch CM33_FPU: Disabled
+    
   RZG3S Family
+    Enable inline BSP IRQ functions: Enabled
     
   RZ/G Common
     Secure stack size (bytes): 0x1000
     Main stack size (bytes): 0x1000
     Heap size (bytes): 0x4000
-    MCU Vcc (mV): 3300
+    MPU Vcc (mV): 3300
     Parameter checking: Disabled
     Assert Failures: Return FSP_ERR_ASSERTION
-    Error Log: No Error Log
     PFS Protect: Enabled
     C Runtime Initialization : Enabled
+    Early BSP Initialization : Disabled
     
   Clocks
     PLL1 1100000000Hz
@@ -163,9 +167,9 @@ FSP Configuration
       P14_0 F2 - - - - Disabled - - "CANFD1: CAN1_TX; GPT1: GTIOC1A; GPT6: GTIOC6B; MTU5: MTIC5U; POE: POE4_N; RSPI3: RSPI3_MOSI; SCIF1: SCIF1_TXD; SCIg0: SCI0_RXD" - None - - 
       P14_1 D1 - - - - Disabled - - "CANFD1: CAN1_RX; GPT1: GTIOC1B; MTU5: MTIC5V; POE: POE8_N; RSPI3: RSPI3_MISO; SCIF1: SCIF1_RXD; SCIg0: SCI0_TXD; SD2: SD2_CD" - None - - 
       P14_2 F1 - - - - Disabled - - "ADC: ADC_TRG; CANFD1: CAN1_TX_DATARATE_EN; MTU5: MTIC5W; POE: POE10_N; RSPI3: RSPI3_SSL; SCIF1: SCIF1_SCK; SCIg0: SCI0_SCK; SD2: SD2_WP" - None - - 
-      P15_0 AF22 RSPI0_RSPI0_CK - H - "Peripheral mode" - - "GPT2: GTIOC2A; GPT7: GTIOC7A; IRQ: IRQ4; MTU: MTCLKA; MTU8: MTIOC8A; PDM0: PDM0_CLK; RSPI0: RSPI0_CK; SCIF5: SCIF5_SCK" - IO - - 
-      P15_1 AC20 RSPI0_RSPI0_MOSI - H - "Peripheral mode" - - "GPT2: GTIOC2B; GPT7: GTIOC7B; IRQ: IRQ5; MTU: MTCLKB; MTU8: MTIOC8B; PDM0: PDM0_DAT; RSPI0: RSPI0_MOSI; SCIF5: SCIF5_RXD" - IO - - 
-      P15_2 AG23 RSPI0_RSPI0_MISO - H - "Peripheral mode" - - "GPT5: GTIOC5A; IRQ: IRQ6; MTU: MTCLKC; MTU8: MTIOC8C; RSPI0: RSPI0_MISO; SCIF5: SCIF5_TXD; SCIg1: SCI1_TXD; xSPI/Octa: XSPI_RESET1_N" - IO - - 
+      P15_0 AF22 RSPI0_RSPI0_CK - HH - "Peripheral mode" - - "GPT2: GTIOC2A; GPT7: GTIOC7A; IRQ: IRQ4; MTU: MTCLKA; MTU8: MTIOC8A; PDM0: PDM0_CLK; RSPI0: RSPI0_CK; SCIF5: SCIF5_SCK" - IO - - 
+      P15_1 AC20 RSPI0_RSPI0_MOSI - HH - "Peripheral mode" - - "GPT2: GTIOC2B; GPT7: GTIOC7B; IRQ: IRQ5; MTU: MTCLKB; MTU8: MTIOC8B; PDM0: PDM0_DAT; RSPI0: RSPI0_MOSI; SCIF5: SCIF5_RXD" - IO - - 
+      P15_2 AG23 RSPI0_RSPI0_MISO - HH - "Peripheral mode" - - "GPT5: GTIOC5A; IRQ: IRQ6; MTU: MTCLKC; MTU8: MTIOC8C; RSPI0: RSPI0_MISO; SCIF5: SCIF5_TXD; SCIg1: SCI1_TXD; xSPI/Octa: XSPI_RESET1_N" - IO - - 
       P15_3 AF23 GPIO - H - "Output mode (High & Not Into Input)" - - "GPT5: GTIOC5B; IRQ: IRQ7; MTU: MTCLKD; MTU8: MTIOC8D; PCIe: PCI_RST_OUT_B; RSPI0: RSPI0_SSL; xSPI/Octa: XSPI_WP1_N" - IO - - 
       P16_0 AD21 - - - - Disabled - - "CANFD1: CAN1_RX_DATARATE_EN; PCIe: PCI_CLKREQ_B; PDM0: PDM0_CLK; SCIF1: SCIF1_CTS_N; SCIg0: SCI0_CTS_N_RTS_N; SPDIF: SPDIF_IN" - None - - 
       P16_1 AC21 - - - - Disabled - - "PDM0: PDM0_DAT; SCIF1: SCIF1_RTS_N; SPDIF: SPDIF_OUT" - None - - 
@@ -391,20 +395,20 @@ FSP Configuration
       WDTOVF_PERROUT AE4 - - - - - - - - - None - - 
       XIN AC7 "Power, System_XIN" - - - - - - - - IO "Read only" - 
       XOUT AD7 "Power, System_XOUT" - - - - - - - - IO "Read only" - 
-      XSPI_CS0_N K2 - - - - - - - - - None - - 
+      XSPI_CS0_N K2 xSPI/Octa_XSPI_CS0_N - H - - - - - - IO - - 
       XSPI_CS1_N K1 - - - - - - - - - None - - 
       XSPI_DS L2 - - - - - - - - - None - - 
-      XSPI_IO0 H2 - - - - - - - - - None - - 
-      XSPI_IO1 H1 - - - - - - - - - None - - 
-      XSPI_IO2 J1 - - - - - - - - - None - - 
-      XSPI_IO3 J2 - - - - - - - - - None - - 
+      XSPI_IO0 H2 xSPI/Octa_XSPI_IO0 - H - - - - - - IO - - 
+      XSPI_IO1 H1 xSPI/Octa_XSPI_IO1 - H - - - - - - IO - - 
+      XSPI_IO2 J1 xSPI/Octa_XSPI_IO2 - H - - - - - - IO - - 
+      XSPI_IO3 J2 xSPI/Octa_XSPI_IO3 - H - - - - - - IO - - 
       XSPI_IO4 L1 - - - - - - - - - None - - 
       XSPI_IO5 M2 - - - - - - - - - None - - 
       XSPI_IO6 M3 - - - - - - - - - None - - 
       XSPI_IO7 M4 - - - - - - - - - None - - 
       XSPI_PVDD L9 "Power, System_XSPI_PVDD" - - - - - - - - IO "Read only" - 
-      XSPI_RESET_N M1 - - - - - - - - - None - - 
-      XSPI_SPCLK H3 - - - - - - - - - None - - 
+      XSPI_RESET_N M1 xSPI/Octa_XSPI_RESET_N - H - - - - - - IO - - 
+      XSPI_SPCLK H3 xSPI/Octa_XSPI_SPCLK - H - - - - - - IO - - 
       XSPI_WP_N N1 - - - - - - - - - None - - 
     R9A08G045S33GBG_CM33.pincfg -> 
       ADC_AVDD18 R9 "Power, System_ADC_AVDD18" - - - - - - - - IO "Read only" - 
@@ -751,47 +755,108 @@ FSP Configuration
       WDTOVF_PERROUT AE4 - - - - - - - - - None - - 
       XIN AC7 "Power, System_XIN" - - - - - - - - IO "Read only" - 
       XOUT AD7 "Power, System_XOUT" - - - - - - - - IO "Read only" - 
-      XSPI_CS0_N K2 - - - - - - - - - None - - 
+      XSPI_CS0_N K2 - - H - - - - - - IO - - 
       XSPI_CS1_N K1 - - - - - - - - - None - - 
       XSPI_DS L2 - - - - - - - - - None - - 
-      XSPI_IO0 H2 - - - - - - - - - None - - 
-      XSPI_IO1 H1 - - - - - - - - - None - - 
-      XSPI_IO2 J1 - - - - - - - - - None - - 
-      XSPI_IO3 J2 - - - - - - - - - None - - 
+      XSPI_IO0 H2 - - H - - - - - - IO - - 
+      XSPI_IO1 H1 - - H - - - - - - IO - - 
+      XSPI_IO2 J1 - - H - - - - - - IO - - 
+      XSPI_IO3 J2 - - H - - - - - - IO - - 
       XSPI_IO4 L1 - - - - - - - - - None - - 
       XSPI_IO5 M2 - - - - - - - - - None - - 
       XSPI_IO6 M3 - - - - - - - - - None - - 
       XSPI_IO7 M4 - - - - - - - - - None - - 
       XSPI_PVDD L9 "Power, System_XSPI_PVDD" - - - - - - - - IO "Read only" - 
-      XSPI_RESET_N M1 - - - - - - - - - None - - 
-      XSPI_SPCLK H3 - - - - - - - - - None - - 
+      XSPI_RESET_N M1 - - H - - - - - - IO - - 
+      XSPI_SPCLK H3 - - H - - - - - - IO - - 
       XSPI_WP_N N1 - - - - - - - - - None - - 
     
   User Events
     
+  Linker Section Mappings
+    
   Module "I/O Port (r_ioport)"
     Parameter Checking: Default (BSP)
     
-  Module "QSPI (r_xspi_qspi)"
-    Parameter Checking Enable: Default (BSP)
+  Module "QSPI Flash (r_xspi_qspi)"
+    Parameter Checking: Default (BSP)
+    Memory-mapping Support: Prefetch Function: Disable
     
   Module "SPI (r_rspi)"
     Parameter Checking: Default (BSP)
-    DMAC Support: Disabled
+    DMAC Support: Enabled
+    
+  Module "Transfer (r_dmac_b)"
+    Parameter Checking: Default (BSP)
     
   HAL
     Instance "g_ioport I/O Port (r_ioport)"
-      Name: g_ioport
-      Pin Configuration Name: g_bsp_pin_cfg
+      General: Name: g_ioport
+      General: Pin Configuration Name: g_bsp_pin_cfg
+      ELC Output Port Group 1: Trigger Source: Disabled
+      ELC Output Port Group 1: Port Selection: 
+      ELC Output Port Group 1: Output Operation: Disabled
+      ELC Output Port Group 2: Trigger Source: Disabled
+      ELC Output Port Group 2: Port Selection: 
+      ELC Output Port Group 2: Output Operation: Disabled
+      ELC Input Port Group 1: Trigger Source: Disabled
+      ELC Input Port Group 1: Event Link Control: Disabled
+      ELC Input Port Group 1: Port Selection: 
+      ELC Input Port Group 1: Edge Detection: Disabled
+      ELC Input Port Group 1: Buffer Overwrite: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P60: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P61: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P62: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P63: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P64: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P65: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P66: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P67: Disabled
+      ELC Input Port Group 2: Trigger Source: Disabled
+      ELC Input Port Group 2: Event Link Control: Disabled
+      ELC Input Port Group 2: Port Selection: 
+      ELC Input Port Group 2: Edge Detection: Disabled
+      ELC Input Port Group 2: Buffer Overwrite: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P80: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P81: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P82: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P83: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P84: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P85: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P86: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P87: Disabled
+      ELC Single Port 0: Common: Event Link Control: Disabled
+      ELC Single Port 0: Common: Event Direction: Disabled
+      ELC Single Port 0: Common: Port selection: Disabled
+      ELC Single Port 0: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 0: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 0: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 1: Common: Event Link Control: Disabled
+      ELC Single Port 1: Common: Event Direction: Disabled
+      ELC Single Port 1: Common: Port selection: Disabled
+      ELC Single Port 1: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 1: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 1: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 2: Common: Event Link Control: Disabled
+      ELC Single Port 2: Common: Event Direction: Disabled
+      ELC Single Port 2: Common: Port selection: Disabled
+      ELC Single Port 2: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 2: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 2: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 3: Common: Event Link Control: Disabled
+      ELC Single Port 3: Common: Event Direction: Disabled
+      ELC Single Port 3: Common: Port selection: Disabled
+      ELC Single Port 3: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 3: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 3: Input Direction Setting: Edge Detection: Disabled
       
-    Instance "g_qspi0 QSPI (r_xspi_qspi)"
+    Instance "g_qspi0 QSPI Flash (r_xspi_qspi)"
       General: Name: g_qspi0
       General: unit: 0
       General: Chip Select: Chip Select 0
       General: SPI Protocol: 1S-1S-1S
       General: Address Bytes: 3
       General: Dummy Clocks for Read: 0
-      General: Prefetch Function: Enable
       Command Definitions: Page Program Command: 0x02
       Command Definitions: Read Command: 0x03
       Command Definitions: Write Enable Command: 0x06
@@ -831,9 +896,73 @@ FSP Configuration
       Extra: Receiver FIFO Trigger Level: 32
       Extra: Transmitter FIFO Trigger Level: 8
       Interrupts: Callback: spi_master_callback
-      Interrupts: Receive Interrupt Enable: Enabled
+      Interrupts: Receive Interrupt Enable: Disabled
       Interrupts: Receive Interrupt Priority: 8
-      Interrupts: Transmit Buffer Empty Interrupt Enable: Enabled
+      Interrupts: Transmit Buffer Empty Interrupt Enable: Disabled
       Interrupts: Transmit Buffer Empty Interrupt Priority: 8
       Interrupts: Error Interrupt Priority: 8
       
+      Instance "g_transfer0 Transfer (r_dmac_b) RSPI_SPTI0"
+        General: Name: g_transfer0
+        General: Unit: Unit 0 (for secure access unit)
+        General: Channel: 0
+        Register Mode: Mode: Normal
+        Register Mode: Source Data Size: 2 Bytes
+        Register Mode: Destination Data Size: 2 Bytes
+        Register Mode: Destination Address Mode: Fixed
+        Register Mode: Source Address Mode: Incremented
+        General: Activation Source: RSPI_SPTI0
+        Register Mode: DMA Activation Request Source Select: Requested by a transfer source module
+        General: DACK Output mode: No configuration required for this device
+        General: External DREQ Input Pin Select: Not use external DREQ pin
+        General: External DACK Output Pin Select: No Output
+        General: External TEND Output Pin Select: No Output
+        General: External DREQ Detection Mode: No Detection(Not supported for this device)
+        General: DMAC Mode: Register Mode
+        Link Mode: Descriptor: NULL
+        Interrupts: Callback: g_spi_master_tx_transfer_callback
+        Interrupts: Context: NULL
+        Interrupts: Transfer End Interrupt Enable: Enabled
+        Interrupts: Transfer End Interrupt Priority: 12
+        Register Mode: Transfer Interval: 0
+        General: Channel Priority: Fixed
+        Register Mode: Transfer Continuation: DMA transfer only once
+        Register Mode: Setting 1 Destination Address: NULL
+        Register Mode: Setting 1 Source Address: NULL
+        Register Mode: Setting 1 Total Number of Transfer Bytes: 0
+        Register Mode: Setting 2 Destination Address: NULL
+        Register Mode: Setting 2 Source Address: NULL
+        Register Mode: Setting 2 Total Number of Transfer Bytes: 1
+        
+      Instance "g_transfer1 Transfer (r_dmac_b) RSPI_SPRI0"
+        General: Name: g_transfer1
+        General: Unit: Unit 0 (for secure access unit)
+        General: Channel: 1
+        Register Mode: Mode: Normal
+        Register Mode: Source Data Size: 2 Bytes
+        Register Mode: Destination Data Size: 2 Bytes
+        Register Mode: Destination Address Mode: Incremented
+        Register Mode: Source Address Mode: Fixed
+        General: Activation Source: RSPI_SPRI0
+        Register Mode: DMA Activation Request Source Select: Requested by a transfer source module
+        General: DACK Output mode: No configuration required for this device
+        General: External DREQ Input Pin Select: Not use external DREQ pin
+        General: External DACK Output Pin Select: No Output
+        General: External TEND Output Pin Select: No Output
+        General: External DREQ Detection Mode: No Detection(Not supported for this device)
+        General: DMAC Mode: Register Mode
+        Link Mode: Descriptor: NULL
+        Interrupts: Callback: g_spi_master_rx_transfer_callback
+        Interrupts: Context: NULL
+        Interrupts: Transfer End Interrupt Enable: Enabled
+        Interrupts: Transfer End Interrupt Priority: 12
+        Register Mode: Transfer Interval: 0
+        General: Channel Priority: Fixed
+        Register Mode: Transfer Continuation: DMA transfer only once
+        Register Mode: Setting 1 Destination Address: NULL
+        Register Mode: Setting 1 Source Address: NULL
+        Register Mode: Setting 1 Total Number of Transfer Bytes: 0
+        Register Mode: Setting 2 Destination Address: NULL
+        Register Mode: Setting 2 Source Address: NULL
+        Register Mode: Setting 2 Total Number of Transfer Bytes: 1
+        

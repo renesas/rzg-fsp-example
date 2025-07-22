@@ -1,0 +1,82 @@
+/***********************************************************************************************************************
+ * File Name    : spi_ep.h
+ * Description  : Contains declarations of data structures and functions used in spi_ep.c.
+ **********************************************************************************************************************/
+/*
+ * Copyright (c) 2023 Renesas Electronics Corporation and/or its affiliates
+ * 
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+
+#ifndef SPI_EP_H_
+#define SPI_EP_H_
+
+/*******************************************************************************************************************//**
+ * @ingroup spi_ep
+ * @{
+ **********************************************************************************************************************/
+
+/***********************************************************************************************************************
+ * Macro definitions
+ **********************************************************************************************************************/
+
+/* Macros for commands to be received through RTT input */
+#define WRITE           (1)
+#define READ            (2)
+#define EXIT            (3)
+
+/* Macro for miscellaneous */
+#define DELAY_ONE_SEC   (1)
+
+/* Array indexing MACRO */
+#define ARRAY_INDEX      (0)
+
+/* MACRO for checking if no byte is received */
+#define BYTES_RECEIVED_ZERO  (0)
+
+/* SPI buffer length */
+#define BUFF_LEN (32)
+
+/* Max wait count for time-out operation */
+#define MAX_COUNT (0xFFFFFF)
+
+/* Min wait count for time-out operation */
+#define MIN_COUNT (0)
+
+/* MACRO for checking if two buffers are equal */
+#define BUFF_EQUAL (0)
+
+/* MACRO for null character */
+#define NULL_CHAR  ('\0')
+
+/* Macro to convert 32 bits into bytes */
+#define BITS_TO_BYTES   (4U)
+
+/* Macro for EP info */
+#define EP_INFO                 "\r\nThe project initializes SPI_B driver and configures SPI_B channel 0 "\
+                                "\r\nas Master and Pmod SF3 as Slave. After initialization, master "\
+                                "\r\ncan transmit and receive data based on the commands from user."\
+                                "\r\nRefer to the MPU User Manual for valid bit rates and corresponding"\
+                                "\r\nclock settings.\r\n"
+
+#define MX25L12835F_SECTOR_SIZE    (4096)
+#define MX25L12835F_PAGE_SIZE      (256)
+
+/***********************************************************************************************************************
+ * User-defined APIs
+ **********************************************************************************************************************/
+#define MX25L12835F_SSL_PIN         (BSP_IO_PORT_22_PIN_07)
+#define MX25L12835F_ADDRESS         (0x1000000U)
+
+/*
+ * function declarations
+ */
+fsp_err_t spi_init(void);
+fsp_err_t spi_write(void);
+fsp_err_t spi_read(void);
+fsp_err_t spi_exit_demo(void);
+void spi_clean_up(void);
+
+/** @} */
+
+#endif /* SPI_EP_H_ */

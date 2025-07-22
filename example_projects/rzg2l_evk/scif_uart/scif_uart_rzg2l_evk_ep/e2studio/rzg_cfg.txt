@@ -11,17 +11,18 @@ FSP Configuration
     series: 2
     
   RZG2L Family
+    Enable inline BSP IRQ functions: Enabled
     
   RZ/G Common
     Secure stack size (bytes): 0x200
     Main stack size (bytes): 0x200
     Heap size (bytes): 0
-    MCU Vcc (mV): 3300
+    MPU Vcc (mV): 3300
     Parameter checking: Disabled
     Assert Failures: Return FSP_ERR_ASSERTION
-    Error Log: No Error Log
     PFS Protect: Enabled
     C Runtime Initialization : Enabled
+    Early BSP Initialization : Disabled
     
   Clocks
     OSC 24000000Hz
@@ -170,9 +171,9 @@ FSP Configuration
       P12_1 AE23 - - - - Disabled - - "CAN1: CAN1_TX; Display: DISP_DATA11; GPT7: GTIOC7B; POE: POE4_N" - None - - 
       P13_0 AF23 - - - - Disabled - - "CAN1: CAN1_RX; Display: DISP_DATA12; IRQ: IRQ0; POE: POE8_N" - None - - 
       P13_1 AG23 - - - - Disabled - - "CAN1: CAN1_TX_DATARATE_EN; Display: DISP_DATA13; IRQ: IRQ1; POE: POE10_N" - None - - 
-      P13_2 AG26 - - - - Disabled - - "CAN1: CAN1_RX_DATARATE_EN; Display: DISP_DATA14; IRQ: IRQ7" - None - - 
-      P14_0 AF27 - - - - Disabled - - "Display: DISP_DATA15; MTU: MTCLKA; SSI1: SSI1_BCK" - None - - 
-      P14_1 AJ23 - - - - Disabled - - "Display: DISP_DATA16; MTU: MTCLKB; SSI1: SSI1_RCK" - None - - 
+      P13_2 AG26 - - - - Disabled - - "CAN1: CAN1_RX_DATARATE_EN; Display: DISP_DATA14; IRQ: IRQ2; IRQ: IRQ7" - None - - 
+      P14_0 AF27 - - - - Disabled - - "Display: DISP_DATA15; MTU: MTCLKA; SD/MMC1: SD1_CD; SSI1: SSI1_BCK" - None - - 
+      P14_1 AJ23 - - - - Disabled - - "Display: DISP_DATA16; MTU: MTCLKB; SD/MMC1: SD1_WP; SSI1: SSI1_RCK" - None - - 
       P15_0 AH23 - - - - Disabled - - "Display: DISP_DATA17; GPT4: GTIOC4A; MTU: MTCLKC; SSI1: SSI1_TXD" - None - - 
       P15_1 AJ24 - - - - Disabled - - "Display: DISP_DATA18; GPT4: GTIOC4B; MTU: MTCLKD; SSI1: SSI1_RXD" - None - - 
       P16_0 AH24 - - - - Disabled - - "Display: DISP_DATA19; GPT5: GTIOC5A; IRQ: IRQ3; SCIF2: SCIF2_TXD" - None - - 
@@ -180,10 +181,10 @@ FSP Configuration
       P17_0 AH25 - - - - Disabled - - "Display: DISP_DATA21; GPT6: GTIOC6A; IRQ: IRQ5; SCIF2: SCIF2_SCK" - None - - 
       P17_1 AJ26 - - - - Disabled - - "Display: DISP_DATA22; GPT6: GTIOC6B; IRQ: IRQ6; SCIF2: SCIF2_CTS" - None - - 
       P17_2 AH26 - - - - Disabled - - "Display: DISP_DATA23; IRQ: IRQ7; SCIF2: SCIF2_RTS" - None - - 
-      P18_0 C2 - - - - Disabled - - "GPT0: GTIOC0A; MTU2: MTIOC2A; RIIC3: RIIC3_SDA" - None - - 
-      P18_1 D3 - - - - Disabled - - "GPT0: GTIOC0B; MTU2: MTIOC2B; RIIC3: RIIC3_SCL" - None - - 
-      P19_0 B1 - - - - Disabled - - "GPT3: GTIOC3A; MTU1: MTIOC1A; RIIC2: RIIC2_SDA" - None - - 
-      P19_1 B2 - - - - Disabled - - "GPT3: GTIOC3B; MTU1: MTIOC1B; RIIC2: RIIC2_SCL" - None - - 
+      P18_0 C2 - - - - Disabled - - "GPT0: GTIOC0A; MTU2: MTIOC2A; RIIC3: RIIC3_SDA; SD/MMC0: SD0_CD" - None - - 
+      P18_1 D3 - - - - Disabled - - "GPT0: GTIOC0B; MTU2: MTIOC2B; RIIC3: RIIC3_SCL; SD/MMC0: SD0_WP" - None - - 
+      P19_0 B1 - - - - Disabled - - "GPT3: GTIOC3A; MTU1: MTIOC1A; RIIC2: RIIC2_SDA; SD/MMC1: SD1_CD" - None - - 
+      P19_1 B2 - - - - Disabled - - "GPT3: GTIOC3B; MTU1: MTIOC1B; RIIC2: RIIC2_SCL; SD/MMC1: SD1_WP" - None - - 
       P1_0 C13 - - - - Disabled - - "GPT1: GTIOC1A; IRQ: IRQ2; MTU0: MTIOC0C; SCI0: SCI0_SCK; SCIF3: SCIF3_SCK" - None - - 
       P1_1 A12 - - - - Disabled - - "GPT1: GTIOC1B; IRQ: IRQ3; MTU0: MTIOC0D; SCI0: SCI0_CTS_N_RTS_N" - None - - 
       P20_0 N1 - - - - Disabled - - "CAN_: CAN_CLK; ETHER0: ET0_TXC_TX_CLK; RSPI0: RSPI0_CK" - None - - 
@@ -205,34 +206,34 @@ FSP Configuration
       P27_1 U2 - - - - Disabled - - "ETHER0: ET0_MDC; MTU8: MTIOC8D; RSPI1: RSPI1_SSL" - None - - 
       P28_0 U1 - - - - Disabled - - "ETHER0: ET0_MDIO" - None - - 
       P28_1 R3 - - - - Disabled - - "ETHER0: ET0_LINKSTA" - None - - 
-      P29_0 AB2 - - - - Disabled - - "ETHER1: ET1_TXC_TX_CLK; SSI2: SSI2_BCK; USB1: USB1_VBUSEN" - None - - 
-      P29_1 Y1 - - - - Disabled - - "ETHER1: ET1_TX_CTL_TX_EN; SSI2: SSI2_RCK; USB1: USB1_OVRCUR" - None - - 
+      P29_0 AB2 - - - - Disabled - - "Camera: CAM_PCLK; ETHER1: ET1_TXC_TX_CLK; SSI2: SSI2_BCK; USB1: USB1_VBUSEN" - None - - 
+      P29_1 Y1 - - - - Disabled - - "Camera: CAM_HREF; ETHER1: ET1_TX_CTL_TX_EN; SSI2: SSI2_RCK; USB1: USB1_OVRCUR" - None - - 
       P2_0 B13 - - - - Disabled - - "ADC: ADC_TRG; GPT2: GTIOC2A; IRQ: IRQ4; MTU1: MTIOC1A; SCIF4: SCIF4_TXD" - None - - 
       P2_1 A13 - - - - Disabled - - "GPT2: GTIOC2B; IRQ: IRQ5; MTU1: MTIOC1B; SCIF4: SCIF4_RXD" - None - - 
-      P30_0 AB1 - - - - Disabled - - "ETHER1: ET1_TXD0; SSI2: SSI2_DATA" - None - - 
-      P30_1 AA2 - - - - Disabled - - "ETHER1: ET1_TXD1" - None - - 
-      P31_0 AA1 - - - - Disabled - - "ETHER1: ET1_TXD2; SCI1: SCI1_RXD; SSI3: SSI3_BCK" - None - - 
-      P31_1 Y2 - - - - Disabled - - "ETHER1: ET1_TXD3; SCI1: SCI1_TXD; SSI3: SSI3_RCK" - None - - 
-      P32_0 U3 - - - - Disabled - - "ETHER1: ET1_TX_ERR; MTU3: MTIOC3A; SCI1: SCI1_SCK; SSI3: SSI3_TXD" - None - - 
-      P32_1 V4 - - - - Disabled - - "ETHER1: ET1_TX_COL; MTU3: MTIOC3B; SCI1: SCI1_CTS_N_RTS_N; SSI3: SSI3_RXD" - None - - 
-      P33_0 U4 - - - - Disabled - - "ETHER1: ET1_TX_CRS; GPT0: GTIOC0A; GPT2: GTIOC2A; SCIF2: SCIF2_TXD" - None - - 
-      P33_1 AC1 - - - - Disabled - - "ETHER1: ET1_RXC_RX_CLK; GPT0: GTIOC0B; GPT2: GTIOC2B; SCIF2: SCIF2_RXD" - None - - 
-      P34_0 AC2 - - - - Disabled - - "ETHER1: ET1_RX_CTL_RX_DV; GPT1: GTIOC1A; GPT3: GTIOC3A; MTU0: MTIOC0A" - None - - 
-      P34_1 AC3 - - - - Disabled - - "ETHER1: ET1_RXD0; GPT1: GTIOC1B; GPT3: GTIOC3B; MTU0: MTIOC0B" - None - - 
-      P35_0 AC4 - - - - Disabled - - "ETHER1: ET1_RXD1; GPT2: GTIOC2A; MTU0: MTIOC0C; SSI0: SSI0_BCK" - None - - 
-      P35_1 AB4 - - - - Disabled - - "ETHER1: ET1_RXD2; GPT2: GTIOC2B; MTU0: MTIOC0D; SSI0: SSI0_RCK" - None - - 
-      P36_0 AB3 - - - - Disabled - - "ETHER1: ET1_RXD3; MTU3: MTIOC3C; POEG: GTETRGA; SSI0: SSI0_TXD" - None - - 
-      P36_1 V3 - - - - Disabled - - "ETHER1: ET1_RX_ERR; MTU3: MTIOC3D; POEG: GTETRGB; SSI0: SSI0_RXD" - None - - 
-      P37_0 W2 - - - - Disabled - - "ETHER1: ET1_MDC; POEG: GTETRGC; SCIF2: SCIF2_SCK" - None - - 
-      P37_1 W1 - - - - Disabled - - "ETHER1: ET1_MDIO; POEG: GTETRGD; SCIF2: SCIF2_CTS" - None - - 
-      P37_2 V2 - - - - Disabled - - "ETHER1: ET1_LINKSTA; SCIF2: SCIF2_RTS" - None - - 
+      P30_0 AB1 - - - - Disabled - - "Camera: CAM_VSYNC; ETHER1: ET1_TXD0; SSI2: SSI2_DATA" - None - - 
+      P30_1 AA2 - - - - Disabled - - "Camera: CAM_DATA15; ETHER1: ET1_TXD1" - None - - 
+      P31_0 AA1 - - - - Disabled - - "Camera: CAM_DATA0; ETHER1: ET1_TXD2; SCI1: SCI1_RXD; SSI3: SSI3_BCK" - None - - 
+      P31_1 Y2 - - - - Disabled - - "Camera: CAM_DATA1; ETHER1: ET1_TXD3; SCI1: SCI1_TXD; SSI3: SSI3_RCK" - None - - 
+      P32_0 U3 - - - - Disabled - - "Camera: CAM_DATA2; ETHER1: ET1_TX_ERR; MTU3: MTIOC3A; SCI1: SCI1_SCK; SSI3: SSI3_TXD" - None - - 
+      P32_1 V4 - - - - Disabled - - "Camera: CAM_DATA3; ETHER1: ET1_TX_COL; MTU3: MTIOC3B; SCI1: SCI1_CTS_N_RTS_N; SSI3: SSI3_RXD" - None - - 
+      P33_0 U4 - - - - Disabled - - "Camera: CAM_DATA4; ETHER1: ET1_TX_CRS; GPT0: GTIOC0A; GPT2: GTIOC2A; SCIF2: SCIF2_TXD" - None - - 
+      P33_1 AC1 - - - - Disabled - - "Camera: CAM_DATA5; ETHER1: ET1_RXC_RX_CLK; GPT0: GTIOC0B; GPT2: GTIOC2B; SCIF2: SCIF2_RXD" - None - - 
+      P34_0 AC2 - - - - Disabled - - "Camera: CAM_DATA6; ETHER1: ET1_RX_CTL_RX_DV; GPT1: GTIOC1A; GPT3: GTIOC3A; MTU0: MTIOC0A" - None - - 
+      P34_1 AC3 - - - - Disabled - - "Camera: CAM_DATA7; ETHER1: ET1_RXD0; GPT1: GTIOC1B; GPT3: GTIOC3B; MTU0: MTIOC0B" - None - - 
+      P35_0 AC4 - - - - Disabled - - "Camera: CAM_DATA8; ETHER1: ET1_RXD1; GPT2: GTIOC2A; MTU0: MTIOC0C; SSI0: SSI0_BCK" - None - - 
+      P35_1 AB4 - - - - Disabled - - "Camera: CAM_DATA9; ETHER1: ET1_RXD2; GPT2: GTIOC2B; MTU0: MTIOC0D; SSI0: SSI0_RCK" - None - - 
+      P36_0 AB3 - - - - Disabled - - "Camera: CAM_DATA10; ETHER1: ET1_RXD3; MTU3: MTIOC3C; POEG: GTETRGA; SSI0: SSI0_TXD" - None - - 
+      P36_1 V3 - - - - Disabled - - "Camera: CAM_DATA11; ETHER1: ET1_RX_ERR; MTU3: MTIOC3D; POEG: GTETRGB; SSI0: SSI0_RXD" - None - - 
+      P37_0 W2 - - - - Disabled - - "Camera: CAM_DATA12; ETHER1: ET1_MDC; POEG: GTETRGC; SCIF2: SCIF2_SCK" - None - - 
+      P37_1 W1 - - - - Disabled - - "Camera: CAM_DATA13; ETHER1: ET1_MDIO; POEG: GTETRGD; SCIF2: SCIF2_CTS" - None - - 
+      P37_2 V2 - - - - Disabled - - "Camera: CAM_DATA14; ETHER1: ET1_LINKSTA; SCIF2: SCIF2_RTS" - None - - 
       P38_0 A15 - - - - Disabled - - "CAN_: CAN_CLK; MTU4: MTIOC4A; POEG: GTETRGA; SCIF0: SCIF0_TXD; USB1: USB1_VBUSEN" - None - - 
       P38_1 B15 - - - - Disabled - - "CAN0: CAN0_TX; MTU4: MTIOC4B; POEG: GTETRGB; SCIF0: SCIF0_RXD; USB1: USB1_OVRCUR" - None - - 
       P39_0 A16 - - - - Disabled - - "CAN0: CAN0_RX; MTU4: MTIOC4C; POEG: GTETRGC; SCIF0: SCIF0_SCK" - None - - 
       P39_1 C15 - - - - Disabled - - "CAN0: CAN0_TX_DATARATE_EN; MTU4: MTIOC4D; POEG: GTETRGD; SCIF0: SCIF0_CTS" - None - - 
       P39_2 B16 - - - - Disabled - - "CAN0: CAN0_RX_DATARATE_EN; SCIF0: SCIF0_RTS" - None - - 
       P3_0 A14 - - - - Disabled - - "GPT3: GTIOC3A; IRQ: IRQ6; MTU2: MTIOC2A; RIIC2: RIIC2_SDA; SCIF4: SCIF4_SCK" - None - - 
-      P3_1 B14 - - - - Disabled - - "GPT3: GTIOC3B; IRQ: IRQ7; MTU2: MTIOC2B; RIIC2: RIIC2_SCL" - None - - 
+      P3_1 B14 - - - - Disabled - - "Camera: CAM_FIELD; GPT3: GTIOC3B; IRQ: IRQ7; MTU2: MTIOC2B; RIIC2: RIIC2_SCL" - None - - 
       P40_0 C17 - - - - Disabled - - "CAN1: CAN1_TX; GPT6: GTIOC6A; MTU5: MTIC5U; SCI0: SCI0_RXD; SCIF1: SCIF1_TXD" - None - - 
       P40_1 B17 - - - - Disabled - - "CAN1: CAN1_RX; GPT6: GTIOC6B; MTU5: MTIC5V; SCI0: SCI0_TXD; SCIF1: SCIF1_RXD" - None - - 
       P40_2 A17 - - - - Disabled - - "CAN1: CAN1_TX_DATARATE_EN; MTU5: MTIC5W; SCI0: SCI0_SCK; SCIF1: SCIF1_SCK" - None - - 
@@ -242,10 +243,10 @@ FSP Configuration
       P42_1 AE7 - - - - Disabled - - "CAN0: CAN0_TX; MTU7: MTIOC7B; RSPI2: RSPI2_MOSI; SCIF2: SCIF2_RXD; USB1: USB1_OVRCUR" - None - - 
       P42_2 AJ3 - - - - Disabled - - "ADC: ADC_TRG; CAN0: CAN0_RX; MTU7: MTIOC7C; RSPI2: RSPI2_MISO; SCIF2: SCIF2_SCK" - None - - 
       P42_3 AH3 - - - - Disabled - - "CAN0: CAN0_TX_DATARATE_EN; MTU7: MTIOC7D; RIIC2: RIIC2_SDA; RSPI2: RSPI2_SSL; SCIF2: SCIF2_CTS" - None - - 
-      P42_4 AC5 - - - - Disabled - - "CAN0: CAN0_RX_DATARATE_EN; RIIC2: RIIC2_SCL; SCIF2: SCIF2_RTS" - None - - 
+      P42_4 AC5 - - - - Disabled - - "CAN0: CAN0_RX_DATARATE_EN; Camera: CAM_FIELD; RIIC2: RIIC2_SCL; SCIF2: SCIF2_RTS" - None - - 
       P43_0 B18 - - - - Disabled - - "GPT4: GTIOC4A; GPT6: GTIOC6A; IRQ: IRQ4; MTU8: MTIOC8A; RSPI0: RSPI0_CK" - None - - 
       P43_1 D17 - - - - Disabled - - "GPT4: GTIOC4B; GPT6: GTIOC6B; IRQ: IRQ5; MTU8: MTIOC8B; RSPI0: RSPI0_MOSI" - None - - 
-      P43_2 E18 GPIO - Low - "Output mode (Low & Not Into Input)" - - "GPT5: GTIOC5A; IRQ: IRQ6; MTU8: MTIOC8C; RSPI0: RSPI0_MISO" - IO - - 
+      P43_2 E18 GPIO - Middle - "Output mode (Low & Not Into Input)" - - "GPT5: GTIOC5A; IRQ: IRQ6; MTU8: MTIOC8C; RSPI0: RSPI0_MISO" - IO - - 
       P43_3 C18 - - - - Disabled - - "GPT5: GTIOC5B; IRQ: IRQ7; MTU8: MTIOC8D; RSPI0: RSPI0_SSL" - None - - 
       P44_0 A19 - - - - Disabled - - "CAN1: CAN1_TX; GPT6: GTIOC6A; MTU3: MTIOC3A; RSPI1: RSPI1_CK; SSI1: SSI1_BCK" - None - - 
       P44_1 F17 - - - - Disabled - - "CAN1: CAN1_RX; GPT6: GTIOC6B; MTU3: MTIOC3B; RSPI1: RSPI1_MOSI; SSI1: SSI1_RCK" - None - - 
@@ -259,12 +260,12 @@ FSP Configuration
       P46_1 A10 - - - - Disabled - - "CAN1: CAN1_RX; POEG: GTETRGB; RIIC2: RIIC2_SCL; SSI1: SSI1_RCK" - None - - 
       P46_2 C12 - - - - Disabled - - "CAN1: CAN1_TX_DATARATE_EN; POEG: GTETRGC; RIIC3: RIIC3_SDA; SSI1: SSI1_TXD" - None - - 
       P46_3 D13 - - - - Disabled - - "CAN1: CAN1_RX_DATARATE_EN; POEG: GTETRGD; RIIC3: RIIC3_SCL; SSI1: SSI1_RXD" - None - - 
-      P47_0 B20 - - - - Disabled - - "IRQ: IRQ0; RSPI0: RSPI0_CK; SCI0: SCI0_RXD; SSI1: SSI1_BCK" - None - - 
-      P47_1 A20 - - - - Disabled - - "IRQ: IRQ1; RSPI0: RSPI0_MOSI; SCI0: SCI0_TXD; SSI1: SSI1_RCK" - None - - 
-      P47_2 A21 - - - - Disabled - - "IRQ: IRQ2; RSPI0: RSPI0_MISO; SCI0: SCI0_SCK; SSI1: SSI1_TXD" - None - - 
-      P47_3 B21 - - - - Disabled - - "IRQ: IRQ3; RSPI0: RSPI0_SSL; SCI0: SCI0_CTS_N_RTS_N; SSI1: SSI1_RXD" - None - - 
-      P48_0 B22 SCIF2_SCIF2_TXD - Middle - "Peripheral mode" - - "MTU: MTCLKA; RIIC2: RIIC2_SDA; RSPI1: RSPI1_CK; SCIF2: SCIF2_TXD" - IO - - 
-      P48_1 A23 SCIF2_SCIF2_RXD - Low - "Peripheral mode" - - "MTU: MTCLKB; RIIC2: RIIC2_SCL; RSPI1: RSPI1_MOSI; SCIF2: SCIF2_RXD" - IO - - 
+      P47_0 B20 - - - - Disabled - - "IRQ: IRQ0; RSPI0: RSPI0_CK; SCI0: SCI0_RXD; SD/MMC0: SD0_CD; SSI1: SSI1_BCK" - None - - 
+      P47_1 A20 - - - - Disabled - - "IRQ: IRQ1; RSPI0: RSPI0_MOSI; SCI0: SCI0_TXD; SD/MMC0: SD0_WP; SSI1: SSI1_RCK" - None - - 
+      P47_2 A21 - - - - Disabled - - "IRQ: IRQ2; RSPI0: RSPI0_MISO; SCI0: SCI0_SCK; SD/MMC1: SD1_CD; SSI1: SSI1_TXD" - None - - 
+      P47_3 B21 - - - - Disabled - - "IRQ: IRQ3; RSPI0: RSPI0_SSL; SCI0: SCI0_CTS_N_RTS_N; SD/MMC1: SD1_WP; SSI1: SSI1_RXD" - None - - 
+      P48_0 B22 SCIF2_SCIF2_TXD - UltraHigh - "Peripheral mode" - - "MTU: MTCLKA; RIIC2: RIIC2_SDA; RSPI1: RSPI1_CK; SCIF2: SCIF2_TXD" - O - - 
+      P48_1 A23 SCIF2_SCIF2_RXD - UltraHigh - "Peripheral mode" - - "MTU: MTCLKB; RIIC2: RIIC2_SCL; RSPI1: RSPI1_MOSI; SCIF2: SCIF2_RXD" - I - - 
       P48_2 A22 - - - - Disabled - - "MTU: MTCLKC; RIIC3: RIIC3_SDA; RSPI1: RSPI1_MISO; SCIF2: SCIF2_SCK" - None - - 
       P48_3 C22 - - - - Disabled - - "MTU: MTCLKD; RIIC3: RIIC3_SCL; RSPI1: RSPI1_SSL; SCIF2: SCIF2_CTS" - None - - 
       P48_4 B23 - - - - Disabled - - "ADC: ADC_TRG; SCIF2: SCIF2_RTS" - None - - 
@@ -627,9 +628,9 @@ FSP Configuration
       P12_1 AE23 - - - - Disabled - - "CAN1: CAN1_TX; Display: DISP_DATA11; GPT7: GTIOC7B; POE: POE4_N" - None - - 
       P13_0 AF23 - - - - Disabled - - "CAN1: CAN1_RX; Display: DISP_DATA12; IRQ: IRQ0; POE: POE8_N" - None - - 
       P13_1 AG23 - - - - Disabled - - "CAN1: CAN1_TX_DATARATE_EN; Display: DISP_DATA13; IRQ: IRQ1; POE: POE10_N" - None - - 
-      P13_2 AG26 - - - - Disabled - - "CAN1: CAN1_RX_DATARATE_EN; Display: DISP_DATA14; IRQ: IRQ7" - None - - 
-      P14_0 AF27 - - - - Disabled - - "Display: DISP_DATA15; MTU: MTCLKA; SSI1: SSI1_BCK" - None - - 
-      P14_1 AJ23 - - - - Disabled - - "Display: DISP_DATA16; MTU: MTCLKB; SSI1: SSI1_RCK" - None - - 
+      P13_2 AG26 - - - - Disabled - - "CAN1: CAN1_RX_DATARATE_EN; Display: DISP_DATA14; IRQ: IRQ2; IRQ: IRQ7" - None - - 
+      P14_0 AF27 - - - - Disabled - - "Display: DISP_DATA15; MTU: MTCLKA; SD/MMC1: SD1_CD; SSI1: SSI1_BCK" - None - - 
+      P14_1 AJ23 - - - - Disabled - - "Display: DISP_DATA16; MTU: MTCLKB; SD/MMC1: SD1_WP; SSI1: SSI1_RCK" - None - - 
       P15_0 AH23 - - - - Disabled - - "Display: DISP_DATA17; GPT4: GTIOC4A; MTU: MTCLKC; SSI1: SSI1_TXD" - None - - 
       P15_1 AJ24 - - - - Disabled - - "Display: DISP_DATA18; GPT4: GTIOC4B; MTU: MTCLKD; SSI1: SSI1_RXD" - None - - 
       P16_0 AH24 - - - - Disabled - - "Display: DISP_DATA19; GPT5: GTIOC5A; IRQ: IRQ3; SCIF2: SCIF2_TXD" - None - - 
@@ -637,10 +638,10 @@ FSP Configuration
       P17_0 AH25 - - - - Disabled - - "Display: DISP_DATA21; GPT6: GTIOC6A; IRQ: IRQ5; SCIF2: SCIF2_SCK" - None - - 
       P17_1 AJ26 - - - - Disabled - - "Display: DISP_DATA22; GPT6: GTIOC6B; IRQ: IRQ6; SCIF2: SCIF2_CTS" - None - - 
       P17_2 AH26 - - - - Disabled - - "Display: DISP_DATA23; IRQ: IRQ7; SCIF2: SCIF2_RTS" - None - - 
-      P18_0 C2 - - - - Disabled - - "GPT0: GTIOC0A; MTU2: MTIOC2A; RIIC3: RIIC3_SDA" - None - - 
-      P18_1 D3 - - - - Disabled - - "GPT0: GTIOC0B; MTU2: MTIOC2B; RIIC3: RIIC3_SCL" - None - - 
-      P19_0 B1 - - - - Disabled - - "GPT3: GTIOC3A; MTU1: MTIOC1A; RIIC2: RIIC2_SDA" - None - - 
-      P19_1 B2 - - - - Disabled - - "GPT3: GTIOC3B; MTU1: MTIOC1B; RIIC2: RIIC2_SCL" - None - - 
+      P18_0 C2 - - - - Disabled - - "GPT0: GTIOC0A; MTU2: MTIOC2A; RIIC3: RIIC3_SDA; SD/MMC0: SD0_CD" - None - - 
+      P18_1 D3 - - - - Disabled - - "GPT0: GTIOC0B; MTU2: MTIOC2B; RIIC3: RIIC3_SCL; SD/MMC0: SD0_WP" - None - - 
+      P19_0 B1 - - - - Disabled - - "GPT3: GTIOC3A; MTU1: MTIOC1A; RIIC2: RIIC2_SDA; SD/MMC1: SD1_CD" - None - - 
+      P19_1 B2 - - - - Disabled - - "GPT3: GTIOC3B; MTU1: MTIOC1B; RIIC2: RIIC2_SCL; SD/MMC1: SD1_WP" - None - - 
       P1_0 C13 - - - - Disabled - - "GPT1: GTIOC1A; IRQ: IRQ2; MTU0: MTIOC0C; SCI0: SCI0_SCK; SCIF3: SCIF3_SCK" - None - - 
       P1_1 A12 - - - - Disabled - - "GPT1: GTIOC1B; IRQ: IRQ3; MTU0: MTIOC0D; SCI0: SCI0_CTS_N_RTS_N" - None - - 
       P20_0 N1 - - - - Disabled - - "CAN_: CAN_CLK; ETHER0: ET0_TXC_TX_CLK; RSPI0: RSPI0_CK" - None - - 
@@ -662,34 +663,34 @@ FSP Configuration
       P27_1 U2 - - - - Disabled - - "ETHER0: ET0_MDC; MTU8: MTIOC8D; RSPI1: RSPI1_SSL" - None - - 
       P28_0 U1 - - - - Disabled - - "ETHER0: ET0_MDIO" - None - - 
       P28_1 R3 - - - - Disabled - - "ETHER0: ET0_LINKSTA" - None - - 
-      P29_0 AB2 - - - - Disabled - - "ETHER1: ET1_TXC_TX_CLK; SSI2: SSI2_BCK; USB1: USB1_VBUSEN" - None - - 
-      P29_1 Y1 - - - - Disabled - - "ETHER1: ET1_TX_CTL_TX_EN; SSI2: SSI2_RCK; USB1: USB1_OVRCUR" - None - - 
+      P29_0 AB2 - - - - Disabled - - "Camera: CAM_PCLK; ETHER1: ET1_TXC_TX_CLK; SSI2: SSI2_BCK; USB1: USB1_VBUSEN" - None - - 
+      P29_1 Y1 - - - - Disabled - - "Camera: CAM_HREF; ETHER1: ET1_TX_CTL_TX_EN; SSI2: SSI2_RCK; USB1: USB1_OVRCUR" - None - - 
       P2_0 B13 - - - - Disabled - - "ADC: ADC_TRG; GPT2: GTIOC2A; IRQ: IRQ4; MTU1: MTIOC1A; SCIF4: SCIF4_TXD" - None - - 
       P2_1 A13 - - - - Disabled - - "GPT2: GTIOC2B; IRQ: IRQ5; MTU1: MTIOC1B; SCIF4: SCIF4_RXD" - None - - 
-      P30_0 AB1 - - - - Disabled - - "ETHER1: ET1_TXD0; SSI2: SSI2_DATA" - None - - 
-      P30_1 AA2 - - - - Disabled - - "ETHER1: ET1_TXD1" - None - - 
-      P31_0 AA1 - - - - Disabled - - "ETHER1: ET1_TXD2; SCI1: SCI1_RXD; SSI3: SSI3_BCK" - None - - 
-      P31_1 Y2 - - - - Disabled - - "ETHER1: ET1_TXD3; SCI1: SCI1_TXD; SSI3: SSI3_RCK" - None - - 
-      P32_0 U3 - - - - Disabled - - "ETHER1: ET1_TX_ERR; MTU3: MTIOC3A; SCI1: SCI1_SCK; SSI3: SSI3_TXD" - None - - 
-      P32_1 V4 - - - - Disabled - - "ETHER1: ET1_TX_COL; MTU3: MTIOC3B; SCI1: SCI1_CTS_N_RTS_N; SSI3: SSI3_RXD" - None - - 
-      P33_0 U4 - - - - Disabled - - "ETHER1: ET1_TX_CRS; GPT0: GTIOC0A; GPT2: GTIOC2A; SCIF2: SCIF2_TXD" - None - - 
-      P33_1 AC1 - - - - Disabled - - "ETHER1: ET1_RXC_RX_CLK; GPT0: GTIOC0B; GPT2: GTIOC2B; SCIF2: SCIF2_RXD" - None - - 
-      P34_0 AC2 - - - - Disabled - - "ETHER1: ET1_RX_CTL_RX_DV; GPT1: GTIOC1A; GPT3: GTIOC3A; MTU0: MTIOC0A" - None - - 
-      P34_1 AC3 - - - - Disabled - - "ETHER1: ET1_RXD0; GPT1: GTIOC1B; GPT3: GTIOC3B; MTU0: MTIOC0B" - None - - 
-      P35_0 AC4 - - - - Disabled - - "ETHER1: ET1_RXD1; GPT2: GTIOC2A; MTU0: MTIOC0C; SSI0: SSI0_BCK" - None - - 
-      P35_1 AB4 - - - - Disabled - - "ETHER1: ET1_RXD2; GPT2: GTIOC2B; MTU0: MTIOC0D; SSI0: SSI0_RCK" - None - - 
-      P36_0 AB3 - - - - Disabled - - "ETHER1: ET1_RXD3; MTU3: MTIOC3C; POEG: GTETRGA; SSI0: SSI0_TXD" - None - - 
-      P36_1 V3 - - - - Disabled - - "ETHER1: ET1_RX_ERR; MTU3: MTIOC3D; POEG: GTETRGB; SSI0: SSI0_RXD" - None - - 
-      P37_0 W2 - - - - Disabled - - "ETHER1: ET1_MDC; POEG: GTETRGC; SCIF2: SCIF2_SCK" - None - - 
-      P37_1 W1 - - - - Disabled - - "ETHER1: ET1_MDIO; POEG: GTETRGD; SCIF2: SCIF2_CTS" - None - - 
-      P37_2 V2 - - - - Disabled - - "ETHER1: ET1_LINKSTA; SCIF2: SCIF2_RTS" - None - - 
+      P30_0 AB1 - - - - Disabled - - "Camera: CAM_VSYNC; ETHER1: ET1_TXD0; SSI2: SSI2_DATA" - None - - 
+      P30_1 AA2 - - - - Disabled - - "Camera: CAM_DATA15; ETHER1: ET1_TXD1" - None - - 
+      P31_0 AA1 - - - - Disabled - - "Camera: CAM_DATA0; ETHER1: ET1_TXD2; SCI1: SCI1_RXD; SSI3: SSI3_BCK" - None - - 
+      P31_1 Y2 - - - - Disabled - - "Camera: CAM_DATA1; ETHER1: ET1_TXD3; SCI1: SCI1_TXD; SSI3: SSI3_RCK" - None - - 
+      P32_0 U3 - - - - Disabled - - "Camera: CAM_DATA2; ETHER1: ET1_TX_ERR; MTU3: MTIOC3A; SCI1: SCI1_SCK; SSI3: SSI3_TXD" - None - - 
+      P32_1 V4 - - - - Disabled - - "Camera: CAM_DATA3; ETHER1: ET1_TX_COL; MTU3: MTIOC3B; SCI1: SCI1_CTS_N_RTS_N; SSI3: SSI3_RXD" - None - - 
+      P33_0 U4 - - - - Disabled - - "Camera: CAM_DATA4; ETHER1: ET1_TX_CRS; GPT0: GTIOC0A; GPT2: GTIOC2A; SCIF2: SCIF2_TXD" - None - - 
+      P33_1 AC1 - - - - Disabled - - "Camera: CAM_DATA5; ETHER1: ET1_RXC_RX_CLK; GPT0: GTIOC0B; GPT2: GTIOC2B; SCIF2: SCIF2_RXD" - None - - 
+      P34_0 AC2 - - - - Disabled - - "Camera: CAM_DATA6; ETHER1: ET1_RX_CTL_RX_DV; GPT1: GTIOC1A; GPT3: GTIOC3A; MTU0: MTIOC0A" - None - - 
+      P34_1 AC3 - - - - Disabled - - "Camera: CAM_DATA7; ETHER1: ET1_RXD0; GPT1: GTIOC1B; GPT3: GTIOC3B; MTU0: MTIOC0B" - None - - 
+      P35_0 AC4 - - - - Disabled - - "Camera: CAM_DATA8; ETHER1: ET1_RXD1; GPT2: GTIOC2A; MTU0: MTIOC0C; SSI0: SSI0_BCK" - None - - 
+      P35_1 AB4 - - - - Disabled - - "Camera: CAM_DATA9; ETHER1: ET1_RXD2; GPT2: GTIOC2B; MTU0: MTIOC0D; SSI0: SSI0_RCK" - None - - 
+      P36_0 AB3 - - - - Disabled - - "Camera: CAM_DATA10; ETHER1: ET1_RXD3; MTU3: MTIOC3C; POEG: GTETRGA; SSI0: SSI0_TXD" - None - - 
+      P36_1 V3 - - - - Disabled - - "Camera: CAM_DATA11; ETHER1: ET1_RX_ERR; MTU3: MTIOC3D; POEG: GTETRGB; SSI0: SSI0_RXD" - None - - 
+      P37_0 W2 - - - - Disabled - - "Camera: CAM_DATA12; ETHER1: ET1_MDC; POEG: GTETRGC; SCIF2: SCIF2_SCK" - None - - 
+      P37_1 W1 - - - - Disabled - - "Camera: CAM_DATA13; ETHER1: ET1_MDIO; POEG: GTETRGD; SCIF2: SCIF2_CTS" - None - - 
+      P37_2 V2 - - - - Disabled - - "Camera: CAM_DATA14; ETHER1: ET1_LINKSTA; SCIF2: SCIF2_RTS" - None - - 
       P38_0 A15 - - - - Disabled - - "CAN_: CAN_CLK; MTU4: MTIOC4A; POEG: GTETRGA; SCIF0: SCIF0_TXD; USB1: USB1_VBUSEN" - None - - 
       P38_1 B15 - - - - Disabled - - "CAN0: CAN0_TX; MTU4: MTIOC4B; POEG: GTETRGB; SCIF0: SCIF0_RXD; USB1: USB1_OVRCUR" - None - - 
       P39_0 A16 - - - - Disabled - - "CAN0: CAN0_RX; MTU4: MTIOC4C; POEG: GTETRGC; SCIF0: SCIF0_SCK" - None - - 
       P39_1 C15 - - - - Disabled - - "CAN0: CAN0_TX_DATARATE_EN; MTU4: MTIOC4D; POEG: GTETRGD; SCIF0: SCIF0_CTS" - None - - 
       P39_2 B16 - - - - Disabled - - "CAN0: CAN0_RX_DATARATE_EN; SCIF0: SCIF0_RTS" - None - - 
       P3_0 A14 - - - - Disabled - - "GPT3: GTIOC3A; IRQ: IRQ6; MTU2: MTIOC2A; RIIC2: RIIC2_SDA; SCIF4: SCIF4_SCK" - None - - 
-      P3_1 B14 - - - - Disabled - - "GPT3: GTIOC3B; IRQ: IRQ7; MTU2: MTIOC2B; RIIC2: RIIC2_SCL" - None - - 
+      P3_1 B14 - - - - Disabled - - "Camera: CAM_FIELD; GPT3: GTIOC3B; IRQ: IRQ7; MTU2: MTIOC2B; RIIC2: RIIC2_SCL" - None - - 
       P40_0 C17 - - - - Disabled - - "CAN1: CAN1_TX; GPT6: GTIOC6A; MTU5: MTIC5U; SCI0: SCI0_RXD; SCIF1: SCIF1_TXD" - None - - 
       P40_1 B17 - - - - Disabled - - "CAN1: CAN1_RX; GPT6: GTIOC6B; MTU5: MTIC5V; SCI0: SCI0_TXD; SCIF1: SCIF1_RXD" - None - - 
       P40_2 A17 - - - - Disabled - - "CAN1: CAN1_TX_DATARATE_EN; MTU5: MTIC5W; SCI0: SCI0_SCK; SCIF1: SCIF1_SCK" - None - - 
@@ -699,10 +700,10 @@ FSP Configuration
       P42_1 AE7 - - - - Disabled - - "CAN0: CAN0_TX; MTU7: MTIOC7B; RSPI2: RSPI2_MOSI; SCIF2: SCIF2_RXD; USB1: USB1_OVRCUR" - None - - 
       P42_2 AJ3 - - - - Disabled - - "ADC: ADC_TRG; CAN0: CAN0_RX; MTU7: MTIOC7C; RSPI2: RSPI2_MISO; SCIF2: SCIF2_SCK" - None - - 
       P42_3 AH3 - - - - Disabled - - "CAN0: CAN0_TX_DATARATE_EN; MTU7: MTIOC7D; RIIC2: RIIC2_SDA; RSPI2: RSPI2_SSL; SCIF2: SCIF2_CTS" - None - - 
-      P42_4 AC5 - - - - Disabled - - "CAN0: CAN0_RX_DATARATE_EN; RIIC2: RIIC2_SCL; SCIF2: SCIF2_RTS" - None - - 
+      P42_4 AC5 - - - - Disabled - - "CAN0: CAN0_RX_DATARATE_EN; Camera: CAM_FIELD; RIIC2: RIIC2_SCL; SCIF2: SCIF2_RTS" - None - - 
       P43_0 B18 - - - - Disabled - - "GPT4: GTIOC4A; GPT6: GTIOC6A; IRQ: IRQ4; MTU8: MTIOC8A; RSPI0: RSPI0_CK" - None - - 
       P43_1 D17 - - - - Disabled - - "GPT4: GTIOC4B; GPT6: GTIOC6B; IRQ: IRQ5; MTU8: MTIOC8B; RSPI0: RSPI0_MOSI" - None - - 
-      P43_2 E18 - - Low - Disabled - - "GPT5: GTIOC5A; IRQ: IRQ6; MTU8: MTIOC8C; RSPI0: RSPI0_MISO" - IO - - 
+      P43_2 E18 - - Middle - Disabled - - "GPT5: GTIOC5A; IRQ: IRQ6; MTU8: MTIOC8C; RSPI0: RSPI0_MISO" - IO - - 
       P43_3 C18 - - - - Disabled - - "GPT5: GTIOC5B; IRQ: IRQ7; MTU8: MTIOC8D; RSPI0: RSPI0_SSL" - None - - 
       P44_0 A19 - - - - Disabled - - "CAN1: CAN1_TX; GPT6: GTIOC6A; MTU3: MTIOC3A; RSPI1: RSPI1_CK; SSI1: SSI1_BCK" - None - - 
       P44_1 F17 - - - - Disabled - - "CAN1: CAN1_RX; GPT6: GTIOC6B; MTU3: MTIOC3B; RSPI1: RSPI1_MOSI; SSI1: SSI1_RCK" - None - - 
@@ -716,12 +717,12 @@ FSP Configuration
       P46_1 A10 - - - - Disabled - - "CAN1: CAN1_RX; POEG: GTETRGB; RIIC2: RIIC2_SCL; SSI1: SSI1_RCK" - None - - 
       P46_2 C12 - - - - Disabled - - "CAN1: CAN1_TX_DATARATE_EN; POEG: GTETRGC; RIIC3: RIIC3_SDA; SSI1: SSI1_TXD" - None - - 
       P46_3 D13 - - - - Disabled - - "CAN1: CAN1_RX_DATARATE_EN; POEG: GTETRGD; RIIC3: RIIC3_SCL; SSI1: SSI1_RXD" - None - - 
-      P47_0 B20 - - - - Disabled - - "IRQ: IRQ0; RSPI0: RSPI0_CK; SCI0: SCI0_RXD; SSI1: SSI1_BCK" - None - - 
-      P47_1 A20 - - - - Disabled - - "IRQ: IRQ1; RSPI0: RSPI0_MOSI; SCI0: SCI0_TXD; SSI1: SSI1_RCK" - None - - 
-      P47_2 A21 - - - - Disabled - - "IRQ: IRQ2; RSPI0: RSPI0_MISO; SCI0: SCI0_SCK; SSI1: SSI1_TXD" - None - - 
-      P47_3 B21 - - - - Disabled - - "IRQ: IRQ3; RSPI0: RSPI0_SSL; SCI0: SCI0_CTS_N_RTS_N; SSI1: SSI1_RXD" - None - - 
-      P48_0 B22 - - Middle - Disabled - - "MTU: MTCLKA; RIIC2: RIIC2_SDA; RSPI1: RSPI1_CK; SCIF2: SCIF2_TXD" - IO - - 
-      P48_1 A23 - - Low - Disabled - - "MTU: MTCLKB; RIIC2: RIIC2_SCL; RSPI1: RSPI1_MOSI; SCIF2: SCIF2_RXD" - IO - - 
+      P47_0 B20 - - - - Disabled - - "IRQ: IRQ0; RSPI0: RSPI0_CK; SCI0: SCI0_RXD; SD/MMC0: SD0_CD; SSI1: SSI1_BCK" - None - - 
+      P47_1 A20 - - - - Disabled - - "IRQ: IRQ1; RSPI0: RSPI0_MOSI; SCI0: SCI0_TXD; SD/MMC0: SD0_WP; SSI1: SSI1_RCK" - None - - 
+      P47_2 A21 - - - - Disabled - - "IRQ: IRQ2; RSPI0: RSPI0_MISO; SCI0: SCI0_SCK; SD/MMC1: SD1_CD; SSI1: SSI1_TXD" - None - - 
+      P47_3 B21 - - - - Disabled - - "IRQ: IRQ3; RSPI0: RSPI0_SSL; SCI0: SCI0_CTS_N_RTS_N; SD/MMC1: SD1_WP; SSI1: SSI1_RXD" - None - - 
+      P48_0 B22 - - Middle - Disabled - - "MTU: MTCLKA; RIIC2: RIIC2_SDA; RSPI1: RSPI1_CK; SCIF2: SCIF2_TXD" - O - - 
+      P48_1 A23 - - Middle - Disabled - - "MTU: MTCLKB; RIIC2: RIIC2_SCL; RSPI1: RSPI1_MOSI; SCIF2: SCIF2_RXD" - I - - 
       P48_2 A22 - - - - Disabled - - "MTU: MTCLKC; RIIC3: RIIC3_SDA; RSPI1: RSPI1_MISO; SCIF2: SCIF2_SCK" - None - - 
       P48_3 C22 - - - - Disabled - - "MTU: MTCLKD; RIIC3: RIIC3_SCL; RSPI1: RSPI1_SSL; SCIF2: SCIF2_CTS" - None - - 
       P48_4 B23 - - - - Disabled - - "ADC: ADC_TRG; SCIF2: SCIF2_RTS" - None - - 
@@ -964,21 +965,79 @@ FSP Configuration
     
   User Events
     
+  Linker Section Mappings
+    
   Module "I/O Port (r_ioport)"
     Parameter Checking: Default (BSP)
     
   Module "UART (r_scif_uart)"
     Parameter Checking: Default (BSP)
-    DMAC Support: Disabled (Currently not supported)
-    RS485 Flow (Driver Enable) Control Support: Disable
+    DMAC Support: Disabled
+    RS485 Flow (Driver Enable) Control Support: Disabled
     
   Module "Timer (r_gtm)"
     Parameter Checking: Default (BSP)
     
   HAL
     Instance "g_ioport I/O Port (r_ioport)"
-      Name: g_ioport
-      Pin Configuration Name: g_bsp_pin_cfg
+      General: Name: g_ioport
+      General: Pin Configuration Name: g_bsp_pin_cfg
+      ELC Output Port Group 1: Trigger Source: Disabled
+      ELC Output Port Group 1: Port Selection: 
+      ELC Output Port Group 1: Output Operation: Disabled
+      ELC Output Port Group 2: Trigger Source: Disabled
+      ELC Output Port Group 2: Port Selection: 
+      ELC Output Port Group 2: Output Operation: Disabled
+      ELC Input Port Group 1: Trigger Source: Disabled
+      ELC Input Port Group 1: Event Link Control: Disabled
+      ELC Input Port Group 1: Port Selection: 
+      ELC Input Port Group 1: Edge Detection: Disabled
+      ELC Input Port Group 1: Buffer Overwrite: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P60: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P61: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P62: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P63: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P64: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P65: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P66: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P67: Disabled
+      ELC Input Port Group 2: Trigger Source: Disabled
+      ELC Input Port Group 2: Event Link Control: Disabled
+      ELC Input Port Group 2: Port Selection: 
+      ELC Input Port Group 2: Edge Detection: Disabled
+      ELC Input Port Group 2: Buffer Overwrite: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P80: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P81: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P82: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P83: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P84: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P85: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P86: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P87: Disabled
+      ELC Single Port 0: Common: Event Link Control: Disabled
+      ELC Single Port 0: Common: Event Direction: Disabled
+      ELC Single Port 0: Common: Port selection: Disabled
+      ELC Single Port 0: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 0: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 0: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 1: Common: Event Link Control: Disabled
+      ELC Single Port 1: Common: Event Direction: Disabled
+      ELC Single Port 1: Common: Port selection: Disabled
+      ELC Single Port 1: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 1: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 1: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 2: Common: Event Link Control: Disabled
+      ELC Single Port 2: Common: Event Direction: Disabled
+      ELC Single Port 2: Common: Port selection: Disabled
+      ELC Single Port 2: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 2: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 2: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 3: Common: Event Link Control: Disabled
+      ELC Single Port 3: Common: Event Direction: Disabled
+      ELC Single Port 3: Common: Port selection: Disabled
+      ELC Single Port 3: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 3: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 3: Input Direction Setting: Edge Detection: Disabled
       
     Instance "g_uart UART (r_scif_uart)"
       General: Name: g_uart
@@ -991,11 +1050,10 @@ FSP Configuration
       Baud: Max Error (%): 5
       Flow Control: UART Communication Mode: RS232
       Flow Control: RS485 Driver Enable Pin Polarity: Active High
-      Flow Control: RS485 Driver Enable Port: Disabled
       Flow Control: RS485 Driver Enable Pin: Disabled
       Flow Control: RS232C Automatic Flow Control: Disabled
       Extra: Clock Source: Internal Clock
-      Extra: Noise Filter: Disable
+      Extra: Noise Filter: Disabled
       Extra: Receive FIFO Trigger Level: Max
       Extra: Receive FIFO RTS Trigger Level: 14
       Interrupts: Callback: user_uart_callback

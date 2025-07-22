@@ -1,25 +1,29 @@
 FSP Configuration
   Board "RZ/G3S Evaluation Kit (SMARC)"
-  R9A08G045S33GBG(CM33)
-    part_number: R9A08G045S33GBG_CM33
+  R9A08G045S33GBG(Cortex-M33)
+    part_number: R9A08G045S33GBG
     rom_size_bytes: 0
     ram_size_bytes: 131072
     package_style: LFBGA
     package_pins: 359
     
-  RZG3S(CM33)
+  RZG3S(Cortex-M33)
+    Launch CA55(core0): Disabled
+    Launch CM33_FPU: Disabled
+    
   RZG3S Family
+    Enable inline BSP IRQ functions: Enabled
     
   RZ/G Common
     Secure stack size (bytes): 0x1000
     Main stack size (bytes): 0x1000
     Heap size (bytes): 0x4000
-    MCU Vcc (mV): 3300
+    MPU Vcc (mV): 3300
     Parameter checking: Disabled
     Assert Failures: Return FSP_ERR_ASSERTION
-    Error Log: No Error Log
     PFS Protect: Enabled
     C Runtime Initialization : Enabled
+    Early BSP Initialization : Disabled
     
   Clocks
     PLL1 1100000000Hz
@@ -215,7 +219,7 @@ FSP Configuration
       P7_4 B10 - - - - Disabled - - "CANFD0: CAN0_RX_DATARATE_EN; ETHER1: ET1_TXD2; IRQ: IRQ2; SCIF2: SCIF2_RTS_N; SCIg1: SCI1_CTS_N_RTS_N" - None - - 
       P8_0 B9 - - - - Disabled - - "ETHER1: ET1_TXD3; IRQ: IRQ1; MTU7: MTIOC7A; SCIF0: SCIF0_SCK; SCIF1: SCIF1_RXD; SCIg0: SCI0_SCK; SSI1: SSI1_BCK" - None - - 
       P8_1 D12 - - - - Disabled - - "ETHER1: ET1_TX_ERR; MTU7: MTIOC7B; SCIF0: SCIF0_RXD; SCIF1: SCIF1_TXD; SCIg0: SCI0_TXD; SSI1: SSI1_RCK" - None - - 
-      P8_2 B8 GPIO - M - "Output mode (Low & Into Input)" - - "ETHER1: ET1_TX_COL; MTU7: MTIOC7C; SCIF0: SCIF0_TXD; SCIF1: SCIF1_CTS_N; SCIg0: SCI0_RXD; SSI1: SSI1_TXD" - IO - - 
+      P8_2 B8 GPIO - M - "Output mode (Low & Not Into Input)" - - "ETHER1: ET1_TX_COL; MTU7: MTIOC7C; SCIF0: SCIF0_TXD; SCIF1: SCIF1_CTS_N; SCIg0: SCI0_RXD; SSI1: SSI1_TXD" - IO - - 
       P8_3 A8 - - - - Disabled - - "ETHER1: ET1_TX_CRS; MTU7: MTIOC7D; SCIF0: SCIF0_CTS_N; SCIF1: SCIF1_RTS_N; SCIg0: SCI0_CTS_N_RTS_N; SSI1: SSI1_RXD" - None - - 
       P8_4 E7 - - - - Disabled - - "ETHER1: ET1_RXC_RX_CLK; SCIF0: SCIF0_RTS_N" - None - - 
       P9_0 D7 - - - - Disabled - - "ETHER1: ET1_RX_CTL_RX_DV; MTU4: MTIOC4A; PDM0: PDM0_CLK; RSPI0: RSPI0_CK; SCIF4: SCIF4_SCK; SSI2: SSI2_BCK" - None - - 
@@ -391,22 +395,22 @@ FSP Configuration
       WDTOVF_PERROUT AE4 - - - - - - - - - None - - 
       XIN AC7 "Power, System_XIN" - - - - - - - - IO "Read only" - 
       XOUT AD7 "Power, System_XOUT" - - - - - - - - IO "Read only" - 
-      XSPI_CS0_N K2 - - - - - - - - - None - - 
+      XSPI_CS0_N K2 xSPI/Octa_XSPI_CS0_N - H - - - - - - IO - - 
       XSPI_CS1_N K1 - - - - - - - - - None - - 
       XSPI_DS L2 - - - - - - - - - None - - 
-      XSPI_IO0 H2 - - - - - - - - - None - - 
-      XSPI_IO1 H1 - - - - - - - - - None - - 
-      XSPI_IO2 J1 - - - - - - - - - None - - 
-      XSPI_IO3 J2 - - - - - - - - - None - - 
+      XSPI_IO0 H2 xSPI/Octa_XSPI_IO0 - H - - - - - - IO - - 
+      XSPI_IO1 H1 xSPI/Octa_XSPI_IO1 - H - - - - - - IO - - 
+      XSPI_IO2 J1 xSPI/Octa_XSPI_IO2 - H - - - - - - IO - - 
+      XSPI_IO3 J2 xSPI/Octa_XSPI_IO3 - H - - - - - - IO - - 
       XSPI_IO4 L1 - - - - - - - - - None - - 
       XSPI_IO5 M2 - - - - - - - - - None - - 
       XSPI_IO6 M3 - - - - - - - - - None - - 
       XSPI_IO7 M4 - - - - - - - - - None - - 
       XSPI_PVDD L9 "Power, System_XSPI_PVDD" - - - - - - - - IO "Read only" - 
-      XSPI_RESET_N M1 - - - - - - - - - None - - 
-      XSPI_SPCLK H3 - - - - - - - - - None - - 
+      XSPI_RESET_N M1 xSPI/Octa_XSPI_RESET_N - H - - - - - - IO - - 
+      XSPI_SPCLK H3 xSPI/Octa_XSPI_SPCLK - H - - - - - - IO - - 
       XSPI_WP_N N1 - - - - - - - - - None - - 
-    R9A08G045S33GBG_CM33.pincfg -> 
+    R9A08G045S33GBG.pincfg -> 
       ADC_AVDD18 R9 "Power, System_ADC_AVDD18" - - - - - - - - IO "Read only" - 
       ADC_AVSS T5 "Power, System_ADC_AVSS" - - - - - - - - IO "Read only" - 
       ADC_AVSS P10 "Power, System_ADC_AVSS" - - - - - - - - IO "Read only" - 
@@ -751,46 +755,104 @@ FSP Configuration
       WDTOVF_PERROUT AE4 - - - - - - - - - None - - 
       XIN AC7 "Power, System_XIN" - - - - - - - - IO "Read only" - 
       XOUT AD7 "Power, System_XOUT" - - - - - - - - IO "Read only" - 
-      XSPI_CS0_N K2 - - - - - - - - - None - - 
+      XSPI_CS0_N K2 - - H - - - - - - IO - - 
       XSPI_CS1_N K1 - - - - - - - - - None - - 
       XSPI_DS L2 - - - - - - - - - None - - 
-      XSPI_IO0 H2 - - - - - - - - - None - - 
-      XSPI_IO1 H1 - - - - - - - - - None - - 
-      XSPI_IO2 J1 - - - - - - - - - None - - 
-      XSPI_IO3 J2 - - - - - - - - - None - - 
+      XSPI_IO0 H2 - - H - - - - - - IO - - 
+      XSPI_IO1 H1 - - H - - - - - - IO - - 
+      XSPI_IO2 J1 - - H - - - - - - IO - - 
+      XSPI_IO3 J2 - - H - - - - - - IO - - 
       XSPI_IO4 L1 - - - - - - - - - None - - 
       XSPI_IO5 M2 - - - - - - - - - None - - 
       XSPI_IO6 M3 - - - - - - - - - None - - 
       XSPI_IO7 M4 - - - - - - - - - None - - 
       XSPI_PVDD L9 "Power, System_XSPI_PVDD" - - - - - - - - IO "Read only" - 
-      XSPI_RESET_N M1 - - - - - - - - - None - - 
-      XSPI_SPCLK H3 - - - - - - - - - None - - 
+      XSPI_RESET_N M1 - - H - - - - - - IO - - 
+      XSPI_SPCLK H3 - - H - - - - - - IO - - 
       XSPI_WP_N N1 - - - - - - - - - None - - 
     
   User Events
     
+  Linker Section Mappings
+    
   Module "I/O Port (r_ioport)"
     Parameter Checking: Default (BSP)
     
-  Module "QSPI (r_xspi_qspi)"
-    Parameter Checking Enable: Default (BSP)
+  Module "QSPI Flash (r_xspi_qspi)"
+    Parameter Checking: Default (BSP)
+    Memory-mapping Support: Prefetch Function: Disable
     
   Module "Timer (r_gtm)"
     Parameter Checking: Default (BSP)
     
   HAL
     Instance "g_ioport I/O Port (r_ioport)"
-      Name: g_ioport
-      Pin Configuration Name: g_bsp_pin_cfg
+      General: Name: g_ioport
+      General: Pin Configuration Name: g_bsp_pin_cfg
+      ELC Output Port Group 1: Trigger Source: Disabled
+      ELC Output Port Group 1: Port Selection: 
+      ELC Output Port Group 1: Output Operation: Disabled
+      ELC Output Port Group 2: Trigger Source: Disabled
+      ELC Output Port Group 2: Port Selection: 
+      ELC Output Port Group 2: Output Operation: Disabled
+      ELC Input Port Group 1: Trigger Source: Disabled
+      ELC Input Port Group 1: Event Link Control: Disabled
+      ELC Input Port Group 1: Port Selection: 
+      ELC Input Port Group 1: Edge Detection: Disabled
+      ELC Input Port Group 1: Buffer Overwrite: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P60: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P61: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P62: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P63: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P64: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P65: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P66: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P67: Disabled
+      ELC Input Port Group 2: Trigger Source: Disabled
+      ELC Input Port Group 2: Event Link Control: Disabled
+      ELC Input Port Group 2: Port Selection: 
+      ELC Input Port Group 2: Edge Detection: Disabled
+      ELC Input Port Group 2: Buffer Overwrite: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P80: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P81: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P82: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P83: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P84: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P85: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P86: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P87: Disabled
+      ELC Single Port 0: Common: Event Link Control: Disabled
+      ELC Single Port 0: Common: Event Direction: Disabled
+      ELC Single Port 0: Common: Port selection: Disabled
+      ELC Single Port 0: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 0: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 0: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 1: Common: Event Link Control: Disabled
+      ELC Single Port 1: Common: Event Direction: Disabled
+      ELC Single Port 1: Common: Port selection: Disabled
+      ELC Single Port 1: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 1: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 1: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 2: Common: Event Link Control: Disabled
+      ELC Single Port 2: Common: Event Direction: Disabled
+      ELC Single Port 2: Common: Port selection: Disabled
+      ELC Single Port 2: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 2: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 2: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 3: Common: Event Link Control: Disabled
+      ELC Single Port 3: Common: Event Direction: Disabled
+      ELC Single Port 3: Common: Port selection: Disabled
+      ELC Single Port 3: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 3: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 3: Input Direction Setting: Edge Detection: Disabled
       
-    Instance "g_qspi0 QSPI (r_xspi_qspi)"
+    Instance "g_qspi0 QSPI Flash (r_xspi_qspi)"
       General: Name: g_qspi0
       General: unit: 0
       General: Chip Select: Chip Select 0
       General: SPI Protocol: 1S-1S-1S
       General: Address Bytes: 3
       General: Dummy Clocks for Read: 0
-      General: Prefetch Function: Enable
       Command Definitions: Page Program Command: 0x02
       Command Definitions: Read Command: 0x03
       Command Definitions: Write Enable Command: 0x06

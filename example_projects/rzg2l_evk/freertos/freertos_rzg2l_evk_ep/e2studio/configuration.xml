@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<raConfiguration version="9">
+<raConfiguration version="11">
   <generalSettings>
     <option key="#Board#" value="board.rzg2l_smarc"/>
     <option key="CPU" value="RZG2L"/>
+    <option key="Core" value="CM33_0"/>
     <option key="#TargetName#" value="R9A07G044L23GBG_CM33"/>
     <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
     <option key="#DeviceCommand#" value="R9A07G044L23GBG_CM33"/>
     <option key="#RTOS#" value="rtos.awsfreertos"/>
     <option key="#pinconfiguration#" value="R9A07G044L23GBG_CM33.pincfg"/>
-    <option key="#FSPVersion#" value="2.0.0"/>
+    <option key="#FSPVersion#" value="3.1.0"/>
     <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##rzg2l_smarc##|Renesas##BSP##Board##rzg2lc_smarc##|Renesas##BSP##Board##rzg2ul_smarc##"/>
     <option key="#SELECTED_TOOLCHAIN#" value="gcc-arm-embedded"/>
-    <option key="#ToolchainVersion#" value="10.3.1.20210824"/>
+    <option key="#ToolchainVersion#" value="13.3.1.arm-13-24"/>
   </generalSettings>
   <raBspConfiguration>
     <config id="config.bsp.rzg2l.R9A07G044L23GBG_CM33">
@@ -25,6 +26,7 @@
       <property id="config.bsp.series" value="config.bsp.series.value"/>
     </config>
     <config id="config.bsp.rzg2l.fsp">
+      <property id="config.bsp.fsp.inline_irq_functions" value="config.bsp.common.inline_irq_functions.enabled"/>
       <property id="config.bsp.fsp.mcu.adc_c.min_adc.sampling_time" value="6"/>
       <property id="config.bsp.fsp.mcu.adc_c.max_adc.sampling_time" value="2800"/>
       <property id="config.bsp.fsp.mcu.canfd.max_data_rate_hz" value="4"/>
@@ -36,8 +38,11 @@
       <property id="config.bsp.fsp.mcu.canfd.max_data_timeseg1" value="16"/>
       <property id="config.bsp.fsp.mcu.canfd.max_data_timeseg2" value="8"/>
       <property id="config.bsp.fsp.mcu.canfd.max_data_sync_jump_width" value="8"/>
+      <property id="config.bsp.fsp.mcu.canfd.max_rxmb_number" value="32"/>
       <property id="config.bsp.fsp.mcu.canfd.afl_rules" value="128"/>
       <property id="config.bsp.fsp.mcu.canfd.afl_rules_each_chnl" value="64"/>
+      <property id="config.bsp.fsp.mcu.sci_uart.max_baud" value="12500000"/>
+      <property id="config.bsp.fsp.mcu.canfd.buffer_ram" value="3584"/>
       <property id="config.bsp.fsp.mcu.spi.max_bitrate" value="25000000"/>
     </config>
     <config id="config.bsp.rz">
@@ -47,9 +52,9 @@
       <property id="config.bsp.common.vcc" value="3300"/>
       <property id="config.bsp.common.checking" value="config.bsp.common.checking.disabled"/>
       <property id="config.bsp.common.assert" value="config.bsp.common.assert.none"/>
-      <property id="config.bsp.common.error_log" value="config.bsp.common.error_log.none"/>
       <property id="config.bsp.common.pfs_protect" value="config.bsp.common.pfs_protect.enabled"/>
       <property id="config.bsp.common.c_runtime_init" value="config.bsp.common.c_runtime_init.enabled"/>
+      <property id="config.bsp.common.early_init" value="config.bsp.common.early_init.disabled"/>
     </config>
   </raBspConfiguration>
   <raClockConfiguration>
@@ -76,57 +81,114 @@
     <node id="board.clock.atclk.freq" mul="400000000" option="_edit"/>
   </raClockConfiguration>
   <raComponentSelection>
-    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="2.0.0">
+    <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="3.1.0">
       <description>Board Support Package Common Files</description>
-      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+      <originalPack>Renesas.RZG.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_ioport" variant="" vendor="Renesas" version="2.0.0">
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_ioport" variant="" vendor="Renesas" version="3.1.0">
       <description>I/O Port</description>
-      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+      <originalPack>Renesas.RZG.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_gtm" variant="" vendor="Renesas" version="2.0.0">
+    <component apiversion="" class="HAL Drivers" condition="" group="all" subgroup="r_gtm" variant="" vendor="Renesas" version="3.1.0">
       <description>General Timer</description>
-      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+      <originalPack>Renesas.RZG.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_freertos_port" variant="" vendor="Renesas" version="2.0.0">
+    <component apiversion="" class="Middleware" condition="" group="all" subgroup="rm_freertos_port" variant="" vendor="Renesas" version="3.1.0">
       <description>FreeRTOS Port</description>
-      <originalPack>Renesas.RZG.2.0.0.pack</originalPack>
+      <originalPack>Renesas.RZG.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="RTOS" condition="" group="FreeRTOS" subgroup="all" variant="" vendor="AWS" version="10.4.6+fsp.2.0.0">
+    <component apiversion="" class="RTOS" condition="" group="FreeRTOS" subgroup="all" variant="" vendor="AWS" version="11.1.0+fsp.3.1.0">
       <description>FreeRTOS</description>
-      <originalPack>Amazon.FreeRTOS-Kernel.10.4.6+fsp.2.0.0.pack</originalPack>
+      <originalPack>Amazon.FreeRTOS-Kernel.11.1.0+fsp.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="CMSIS" condition="" group="CMSIS5" subgroup="CoreM" variant="" vendor="Arm" version="5.9.0+fsp.2.0.0">
-      <description>Arm CMSIS Version 5 - Core (M)</description>
-      <originalPack>Arm.CMSIS5.5.9.0+fsp.2.0.0.pack</originalPack>
+    <component apiversion="" class="CMSIS" condition="" group="CMSIS5" subgroup="CoreM" variant="" vendor="Arm" version="6.1.0+fsp.3.1.0">
+      <description>Arm CMSIS Version 6 - Core (M)</description>
+      <originalPack>Arm.CMSIS6.6.1.0+fsp.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="Heaps" condition="" group="FreeRTOS" subgroup="heap_2" variant="" vendor="AWS" version="10.4.6+fsp.2.0.0">
-      <description>FreeRTOS - Memory Management - Heap 2</description>
-      <originalPack>Amazon.FreeRTOS-Kernel.10.4.6+fsp.2.0.0.pack</originalPack>
-    </component>
-    <component apiversion="" class="BSP" condition="" group="Board" subgroup="rzg2l_smarc" variant="" vendor="Renesas" version="2.0.0">
+    <component apiversion="" class="BSP" condition="" group="Board" subgroup="rzg2l_smarc" variant="" vendor="Renesas" version="3.1.0">
       <description>Evaluation Kit RZ/G2L Support Files (RZ/G2L)</description>
-      <originalPack>Renesas.RZG_board_rzg2l_smarc.2.0.0.pack</originalPack>
+      <originalPack>Renesas.RZG_board_rzg2l_smarc.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="device" variant="R9A07G044L23GBG_CM33" vendor="Renesas" version="2.0.0">
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="device" variant="R9A07G044L23GBG_CM33" vendor="Renesas" version="3.1.0">
       <description>Board support package for R9A07G044L23GBG_CM33</description>
-      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+      <originalPack>Renesas.RZG_mcu_rzg2l.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="device" variant="" vendor="Renesas" version="2.0.0">
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="device" variant="" vendor="Renesas" version="3.1.0">
       <description>Board support package for RZG2L</description>
-      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+      <originalPack>Renesas.RZG_mcu_rzg2l.3.1.0.pack</originalPack>
     </component>
-    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="fsp" variant="" vendor="Renesas" version="2.0.0">
+    <component apiversion="" class="BSP" condition="" group="rzg2l" subgroup="fsp" variant="" vendor="Renesas" version="3.1.0">
       <description>Board support package for RZ/G2L (RZ/G2L) - FSP Data</description>
-      <originalPack>Renesas.RZG_mcu_rzg2l.2.0.0.pack</originalPack>
+      <originalPack>Renesas.RZG_mcu_rzg2l.3.1.0.pack</originalPack>
+    </component>
+    <component apiversion="" class="Heaps" condition="" group="FreeRTOS" subgroup="heap_4" variant="" vendor="AWS" version="11.1.0+fsp.3.1.0">
+      <description>FreeRTOS - Memory Management - Heap 4</description>
+      <originalPack>Amazon.FreeRTOS-Kernel.11.1.0+fsp.3.1.0.pack</originalPack>
     </component>
   </raComponentSelection>
   <raElcConfiguration/>
   <raIcuConfiguration/>
+  <raLinkMapConfiguration/>
   <raModuleConfiguration>
     <module id="module.driver.ioport_on_ioport.0">
       <property id="module.driver.ioport.name" value="g_ioport"/>
       <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
+      <property id="module.driver.ioport.elc_trigger_output_group1" value="_disabled"/>
+      <property id="module.driver.ioport.port_select_output_group1" value=""/>
+      <property id="module.driver.ioport.operation_output_group1" value="module.driver.ioport.operation_output_group.disable"/>
+      <property id="module.driver.ioport.elc_trigger_output_group2" value="_disabled"/>
+      <property id="module.driver.ioport.port_select_output_group2" value=""/>
+      <property id="module.driver.ioport.operation_output_group2" value="module.driver.ioport.operation_output_group.disable"/>
+      <property id="module.driver.ioport.elc_trigger_input_group1" value="_disabled"/>
+      <property id="module.driver.ioport.event_control_input_group1" value="enum.driver.ioport.event_control_input_group.disable"/>
+      <property id="module.driver.ioport.port_select_input_group1" value=""/>
+      <property id="module.driver.ioport.edge_detect_input_group1" value="enum.driver.ioport.edge_detect_input_group.disable"/>
+      <property id="module.driver.ioport.buffer_overwrite_input_group1" value="enum.driver.ioport.buffer_overwrite_input_group.disable"/>
+      <property id="module.driver.ioport.p60_initial_value_input_group1" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p61_initial_value_input_group1" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p62_initial_value_input_group1" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p63_initial_value_input_group1" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p64_initial_value_input_group1" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p65_initial_value_input_group1" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p66_initial_value_input_group1" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p67_initial_value_input_group1" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.elc_trigger_input_group2" value="_disabled"/>
+      <property id="module.driver.ioport.event_control_input_group2" value="enum.driver.ioport.event_control_input_group.disable"/>
+      <property id="module.driver.ioport.port_select_input_group2" value=""/>
+      <property id="module.driver.ioport.edge_detect_input_group2" value="enum.driver.ioport.edge_detect_input_group.disable"/>
+      <property id="module.driver.ioport.buffer_overwrite_input_group2" value="enum.driver.ioport.buffer_overwrite_input_group.disable"/>
+      <property id="module.driver.ioport.p80_initial_value_input_group2" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p81_initial_value_input_group2" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p82_initial_value_input_group2" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p83_initial_value_input_group2" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p84_initial_value_input_group2" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p85_initial_value_input_group2" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p86_initial_value_input_group2" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.p87_initial_value_input_group2" value="enum.driver.ioport.initial_value_input_group.disable"/>
+      <property id="module.driver.ioport.event_control_single_port0" value="enum.driver.ioport.event_control_single_port.disable"/>
+      <property id="module.driver.ioport.event_direction_single_port0" value="enum.driver.ioport.event_direction_single_port.disable"/>
+      <property id="module.driver.ioport.port_number_single_port0" value="enum.driver.ioport.port_number_single_port.disable"/>
+      <property id="module.driver.ioport.elc_trigger_single_output_port0" value="_disabled"/>
+      <property id="module.driver.ioport.operation_single_output_port0" value="enum.driver.ioport.operation_single_output_port.disable"/>
+      <property id="module.driver.ioport.edge_detect_single_input_port0" value="enum.driver.ioport.edge_detect_single_input_port.disable"/>
+      <property id="module.driver.ioport.event_control_single_port1" value="enum.driver.ioport.event_control_single_port.disable"/>
+      <property id="module.driver.ioport.event_direction_single_port1" value="enum.driver.ioport.event_direction_single_port.disable"/>
+      <property id="module.driver.ioport.port_number_single_port1" value="enum.driver.ioport.port_number_single_port.disable"/>
+      <property id="module.driver.ioport.elc_trigger_single_output_port1" value="_disabled"/>
+      <property id="module.driver.ioport.operation_single_output_port1" value="enum.driver.ioport.operation_single_output_port.disable"/>
+      <property id="module.driver.ioport.edge_detect_single_input_port1" value="enum.driver.ioport.edge_detect_single_input_port.disable"/>
+      <property id="module.driver.ioport.event_control_single_port2" value="enum.driver.ioport.event_control_single_port.disable"/>
+      <property id="module.driver.ioport.event_direction_single_port2" value="enum.driver.ioport.event_direction_single_port.disable"/>
+      <property id="module.driver.ioport.port_number_single_port2" value="enum.driver.ioport.port_number_single_port.disable"/>
+      <property id="module.driver.ioport.elc_trigger_single_output_port2" value="_disabled"/>
+      <property id="module.driver.ioport.operation_single_output_port2" value="enum.driver.ioport.operation_single_output_port.disable"/>
+      <property id="module.driver.ioport.edge_detect_single_input_port2" value="enum.driver.ioport.edge_detect_single_input_port.disable"/>
+      <property id="module.driver.ioport.event_control_single_port3" value="enum.driver.ioport.event_control_single_port.disable"/>
+      <property id="module.driver.ioport.event_direction_single_port3" value="enum.driver.ioport.event_direction_single_port.disable"/>
+      <property id="module.driver.ioport.port_number_single_port3" value="enum.driver.ioport.port_number_single_port.disable"/>
+      <property id="module.driver.ioport.elc_trigger_single_output_port3" value="_disabled"/>
+      <property id="module.driver.ioport.operation_single_output_port3" value="enum.driver.ioport.operation_single_output_port.disable"/>
+      <property id="module.driver.ioport.edge_detect_single_input_port3" value="enum.driver.ioport.edge_detect_single_input_port.disable"/>
     </module>
     <module id="module.driver.timer_on_gtm.2">
       <property id="module.driver.timer.name" value="g_timer2"/>
@@ -141,7 +203,6 @@
       <property id="module.driver.timer.direction" value="module.driver.timer.direction.0"/>
     </module>
     <module id="module.middleware.rm_freertos_port.0"/>
-    <module id="module.freertos.heap.2.1341084136"/>
     <module id="module.driver.timer_on_gtm.749703817">
       <property id="module.driver.timer.name" value="g_periodic_timer_msgq"/>
       <property id="module.driver.timer.channel" value="enum.mcu.gtm.channels.1"/>
@@ -166,6 +227,7 @@
       <property id="module.driver.timer.int.generateatstart" value="module.driver.timer.int.generateatstart.0"/>
       <property id="module.driver.timer.direction" value="module.driver.timer.direction.0"/>
     </module>
+    <module id="module.freertos.heap.4.2129135588"/>
     <object id="rtos.awsfreertos.object.queue.1318124705">
       <property id="rtos.awsfreertos.object.queue.symbol" value="g_queue"/>
       <property id="rtos.awsfreertos.object.queue.item_size" value="15"/>
@@ -181,9 +243,9 @@
       <stack module="module.middleware.rm_freertos_port.0">
         <stack module="module.driver.timer_on_gtm.2" requires="module.middleware.rm_freertos_port.requires.gtm.ticker"/>
       </stack>
-      <stack module="module.freertos.heap.2.1341084136"/>
       <stack module="module.driver.timer_on_gtm.749703817"/>
       <stack module="module.driver.timer_on_gtm.546861728"/>
+      <stack module="module.freertos.heap.4.2129135588"/>
     </context>
     <context id="rtos.awsfreertos.thread.1927263067">
       <property id="_symbol" value="sender_task"/>
@@ -212,6 +274,9 @@
       <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.dynamic"/>
       <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
     </context>
+    <config id="config.driver.ioport">
+      <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
+    </config>
     <config id="config.driver.gtm">
       <property id="config.driver.gtm.param_checking_enable" value="config.driver.gtm.param_checking_enable.bsp"/>
     </config>
@@ -236,6 +301,7 @@
       <property id="config.awsfreertos.thread.configuse_16_bit_ticks" value="config.awsfreertos.thread.configuse_16_bit_ticks.disabled"/>
       <property id="config.awsfreertos.thread.configidle_should_yield" value="config.awsfreertos.thread.configidle_should_yield.enabled"/>
       <property id="config.awsfreertos.thread.configuse_task_notifications" value="config.awsfreertos.thread.configuse_task_notifications.enabled"/>
+      <property id="config.awsfreertos.thread.configtask_notifications_array_enteries" value="1"/>
       <property id="config.awsfreertos.thread.configuse_mutexes" value="config.awsfreertos.thread.configuse_mutexes.disabled"/>
       <property id="config.awsfreertos.thread.configuse_recursive_mutexes" value="config.awsfreertos.thread.configuse_recursive_mutexes.disabled"/>
       <property id="config.awsfreertos.thread.configuse_counting_semaphores" value="config.awsfreertos.thread.configuse_counting_semaphores.enabled"/>
@@ -280,32 +346,12 @@
       <property id="config.awsfreertos.thread.print_function" value="printf(x)"/>
       <property id="config.awsfreertos.thread.max_length" value="192"/>
       <property id="config.awsfreertos.thread.include_time_and_task" value="config.awsfreertos.thread.include_time_and_task.disabled"/>
-    </config>
-    <config id="config.driver.ioport">
-      <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
+      <property id="config.awsfreertos.thread.debug_logging_name" value="Log Name"/>
+      <property id="config.awsfreertos.thread.logging_level" value="config.awsfreertos.thread.logging_level.log_none"/>
     </config>
   </raModuleConfiguration>
   <raPinConfiguration>
-    <pincfg active="true" name="RZG2L-SMARC.pincfg" selected="true" symbol="g_bsp_pin_cfg">
-      <configSetting altId="can0.mode.custom.free" configurationId="can0.mode"/>
-      <configSetting altId="can1.mode.custom.free" configurationId="can1.mode"/>
-      <configSetting altId="irq.mode.custom.free" configurationId="irq.mode"/>
-      <configSetting altId="riic0.mode.custom.free" configurationId="riic0.mode"/>
-      <configSetting altId="riic0.riic0_scl.riic0_scl" configurationId="riic0.riic0_scl"/>
-      <configSetting altId="riic0.riic0_sda.riic0_sda" configurationId="riic0.riic0_sda"/>
-      <configSetting altId="riic0_scl.riic0.riic0_scl" configurationId="riic0_scl"/>
-      <configSetting altId="riic0_sda.riic0.riic0_sda" configurationId="riic0_sda"/>
-      <configSetting altId="riic1.mode.custom.free" configurationId="riic1.mode"/>
-      <configSetting altId="riic1.riic1_scl.riic1_scl" configurationId="riic1.riic1_scl"/>
-      <configSetting altId="riic1.riic1_sda.riic1_sda" configurationId="riic1.riic1_sda"/>
-      <configSetting altId="riic1_scl.riic1.riic1_scl" configurationId="riic1_scl"/>
-      <configSetting altId="riic1_sda.riic1.riic1_sda" configurationId="riic1_sda"/>
-      <configSetting altId="riic3.mode.custom.free" configurationId="riic3.mode"/>
-      <configSetting altId="rspi1.mode.custom.free" configurationId="rspi1.mode"/>
-      <configSetting altId="scif0.mode.custom.free" configurationId="scif0.mode"/>
-      <configSetting altId="scif1.mode.custom.free" configurationId="scif1.mode"/>
-      <configSetting altId="scif2.mode.custom.free" configurationId="scif2.mode"/>
-    </pincfg>
+    <pincfg active="true" name="RZG2L-SMARC.pincfg" selected="true" symbol="g_bsp_pin_cfg"/>
     <pincfg active="false" name="R9A07G044L23GBG_CM33.pincfg" selected="false" symbol=""/>
   </raPinConfiguration>
 </raConfiguration>

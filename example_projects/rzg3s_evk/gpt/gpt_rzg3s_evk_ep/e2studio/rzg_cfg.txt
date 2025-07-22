@@ -1,25 +1,29 @@
 FSP Configuration
   Board "RZ/G3S Evaluation Kit (SMARC)"
-  R9A08G045S33GBG(CM33)
-    part_number: R9A08G045S33GBG_CM33
+  R9A08G045S33GBG(Cortex-M33)
+    part_number: R9A08G045S33GBG
     rom_size_bytes: 0
     ram_size_bytes: 131072
     package_style: LFBGA
     package_pins: 359
     
-  RZG3S(CM33)
+  RZG3S(Cortex-M33)
+    Launch CA55(core0): Disabled
+    Launch CM33_FPU: Disabled
+    
   RZG3S Family
+    Enable inline BSP IRQ functions: Enabled
     
   RZ/G Common
     Secure stack size (bytes): 0x1000
     Main stack size (bytes): 0x1000
     Heap size (bytes): 0x4000
-    MCU Vcc (mV): 3300
+    MPU Vcc (mV): 3300
     Parameter checking: Disabled
     Assert Failures: Return FSP_ERR_ASSERTION
-    Error Log: No Error Log
     PFS Protect: Enabled
     C Runtime Initialization : Enabled
+    Early BSP Initialization : Disabled
     
   Clocks
     PLL1 1100000000Hz
@@ -163,8 +167,8 @@ FSP Configuration
       P14_0 F2 - - - - Disabled - - "CANFD1: CAN1_TX; GPT1: GTIOC1A; GPT6: GTIOC6B; MTU5: MTIC5U; POE: POE4_N; RSPI3: RSPI3_MOSI; SCIF1: SCIF1_TXD; SCIg0: SCI0_RXD" - None - - 
       P14_1 D1 - - - - Disabled - - "CANFD1: CAN1_RX; GPT1: GTIOC1B; MTU5: MTIC5V; POE: POE8_N; RSPI3: RSPI3_MISO; SCIF1: SCIF1_RXD; SCIg0: SCI0_TXD; SD2: SD2_CD" - None - - 
       P14_2 F1 - - - - Disabled - - "ADC: ADC_TRG; CANFD1: CAN1_TX_DATARATE_EN; MTU5: MTIC5W; POE: POE10_N; RSPI3: RSPI3_SSL; SCIF1: SCIF1_SCK; SCIg0: SCI0_SCK; SD2: SD2_WP" - None - - 
-      P15_0 AF22 GPT7_GTIOC7A - M - "Peripheral mode" - - "GPT2: GTIOC2A; GPT7: GTIOC7A; IRQ: IRQ4; MTU: MTCLKA; MTU8: MTIOC8A; PDM0: PDM0_CLK; RSPI0: RSPI0_CK; SCIF5: SCIF5_SCK" - IO - - 
-      P15_1 AC20 GPT7_GTIOC7B - M - "Peripheral mode" - - "GPT2: GTIOC2B; GPT7: GTIOC7B; IRQ: IRQ5; MTU: MTCLKB; MTU8: MTIOC8B; PDM0: PDM0_DAT; RSPI0: RSPI0_MOSI; SCIF5: SCIF5_RXD" - IO - - 
+      P15_0 AF22 GPT7_GTIOC7A - H - "Peripheral mode" - - "GPT2: GTIOC2A; GPT7: GTIOC7A; IRQ: IRQ4; MTU: MTCLKA; MTU8: MTIOC8A; PDM0: PDM0_CLK; RSPI0: RSPI0_CK; SCIF5: SCIF5_SCK" - IO - - 
+      P15_1 AC20 GPT7_GTIOC7B - H - "Peripheral mode" - - "GPT2: GTIOC2B; GPT7: GTIOC7B; IRQ: IRQ5; MTU: MTCLKB; MTU8: MTIOC8B; PDM0: PDM0_DAT; RSPI0: RSPI0_MOSI; SCIF5: SCIF5_RXD" - IO - - 
       P15_2 AG23 - - - - Disabled - - "GPT5: GTIOC5A; IRQ: IRQ6; MTU: MTCLKC; MTU8: MTIOC8C; RSPI0: RSPI0_MISO; SCIF5: SCIF5_TXD; SCIg1: SCI1_TXD; xSPI/Octa: XSPI_RESET1_N" - None - - 
       P15_3 AF23 - - - - Disabled - - "GPT5: GTIOC5B; IRQ: IRQ7; MTU: MTCLKD; MTU8: MTIOC8D; PCIe: PCI_RST_OUT_B; RSPI0: RSPI0_SSL; xSPI/Octa: XSPI_WP1_N" - None - - 
       P16_0 AD21 - - - - Disabled - - "CANFD1: CAN1_RX_DATARATE_EN; PCIe: PCI_CLKREQ_B; PDM0: PDM0_CLK; SCIF1: SCIF1_CTS_N; SCIg0: SCI0_CTS_N_RTS_N; SPDIF: SPDIF_IN" - None - - 
@@ -391,22 +395,22 @@ FSP Configuration
       WDTOVF_PERROUT AE4 - - - - - - - - - None - - 
       XIN AC7 "Power, System_XIN" - - - - - - - - IO "Read only" - 
       XOUT AD7 "Power, System_XOUT" - - - - - - - - IO "Read only" - 
-      XSPI_CS0_N K2 - - - - - - - - - None - - 
+      XSPI_CS0_N K2 xSPI/Octa_XSPI_CS0_N - H - - - - - - IO - - 
       XSPI_CS1_N K1 - - - - - - - - - None - - 
       XSPI_DS L2 - - - - - - - - - None - - 
-      XSPI_IO0 H2 - - - - - - - - - None - - 
-      XSPI_IO1 H1 - - - - - - - - - None - - 
-      XSPI_IO2 J1 - - - - - - - - - None - - 
-      XSPI_IO3 J2 - - - - - - - - - None - - 
+      XSPI_IO0 H2 xSPI/Octa_XSPI_IO0 - H - - - - - - IO - - 
+      XSPI_IO1 H1 xSPI/Octa_XSPI_IO1 - H - - - - - - IO - - 
+      XSPI_IO2 J1 xSPI/Octa_XSPI_IO2 - H - - - - - - IO - - 
+      XSPI_IO3 J2 xSPI/Octa_XSPI_IO3 - H - - - - - - IO - - 
       XSPI_IO4 L1 - - - - - - - - - None - - 
       XSPI_IO5 M2 - - - - - - - - - None - - 
       XSPI_IO6 M3 - - - - - - - - - None - - 
       XSPI_IO7 M4 - - - - - - - - - None - - 
       XSPI_PVDD L9 "Power, System_XSPI_PVDD" - - - - - - - - IO "Read only" - 
-      XSPI_RESET_N M1 - - - - - - - - - None - - 
-      XSPI_SPCLK H3 - - - - - - - - - None - - 
+      XSPI_RESET_N M1 xSPI/Octa_XSPI_RESET_N - H - - - - - - IO - - 
+      XSPI_SPCLK H3 xSPI/Octa_XSPI_SPCLK - H - - - - - - IO - - 
       XSPI_WP_N N1 - - - - - - - - - None - - 
-    R9A08G045S33GBG_CM33.pincfg -> 
+    R9A08G045S33GBG.pincfg -> 
       ADC_AVDD18 R9 "Power, System_ADC_AVDD18" - - - - - - - - IO "Read only" - 
       ADC_AVSS T5 "Power, System_ADC_AVSS" - - - - - - - - IO "Read only" - 
       ADC_AVSS P10 "Power, System_ADC_AVSS" - - - - - - - - IO "Read only" - 
@@ -751,49 +755,106 @@ FSP Configuration
       WDTOVF_PERROUT AE4 - - - - - - - - - None - - 
       XIN AC7 "Power, System_XIN" - - - - - - - - IO "Read only" - 
       XOUT AD7 "Power, System_XOUT" - - - - - - - - IO "Read only" - 
-      XSPI_CS0_N K2 - - - - - - - - - None - - 
+      XSPI_CS0_N K2 - - H - - - - - - IO - - 
       XSPI_CS1_N K1 - - - - - - - - - None - - 
       XSPI_DS L2 - - - - - - - - - None - - 
-      XSPI_IO0 H2 - - - - - - - - - None - - 
-      XSPI_IO1 H1 - - - - - - - - - None - - 
-      XSPI_IO2 J1 - - - - - - - - - None - - 
-      XSPI_IO3 J2 - - - - - - - - - None - - 
+      XSPI_IO0 H2 - - H - - - - - - IO - - 
+      XSPI_IO1 H1 - - H - - - - - - IO - - 
+      XSPI_IO2 J1 - - H - - - - - - IO - - 
+      XSPI_IO3 J2 - - H - - - - - - IO - - 
       XSPI_IO4 L1 - - - - - - - - - None - - 
       XSPI_IO5 M2 - - - - - - - - - None - - 
       XSPI_IO6 M3 - - - - - - - - - None - - 
       XSPI_IO7 M4 - - - - - - - - - None - - 
       XSPI_PVDD L9 "Power, System_XSPI_PVDD" - - - - - - - - IO "Read only" - 
-      XSPI_RESET_N M1 - - - - - - - - - None - - 
-      XSPI_SPCLK H3 - - - - - - - - - None - - 
+      XSPI_RESET_N M1 - - H - - - - - - IO - - 
+      XSPI_SPCLK H3 - - H - - - - - - IO - - 
       XSPI_WP_N N1 - - - - - - - - - None - - 
     
   User Events
     
+  Linker Section Mappings
+    
   Module "I/O Port (r_ioport)"
     Parameter Checking: Default (BSP)
     
-  Module "QSPI (r_xspi_qspi)"
-    Parameter Checking Enable: Default (BSP)
+  Module "QSPI Flash (r_xspi_qspi)"
+    Parameter Checking: Default (BSP)
+    Memory-mapping Support: Prefetch Function: Disable
     
   Module "Timer, General PWM (r_gpt)"
     Parameter Checking: Default (BSP)
     Pin Output Support: Enabled
     Write Protect Enable: Disabled
-    Clock Source: P0CLK
     
   HAL
     Instance "g_ioport I/O Port (r_ioport)"
-      Name: g_ioport
-      Pin Configuration Name: g_bsp_pin_cfg
+      General: Name: g_ioport
+      General: Pin Configuration Name: g_bsp_pin_cfg
+      ELC Output Port Group 1: Trigger Source: Disabled
+      ELC Output Port Group 1: Port Selection: 
+      ELC Output Port Group 1: Output Operation: Disabled
+      ELC Output Port Group 2: Trigger Source: Disabled
+      ELC Output Port Group 2: Port Selection: 
+      ELC Output Port Group 2: Output Operation: Disabled
+      ELC Input Port Group 1: Trigger Source: Disabled
+      ELC Input Port Group 1: Event Link Control: Disabled
+      ELC Input Port Group 1: Port Selection: 
+      ELC Input Port Group 1: Edge Detection: Disabled
+      ELC Input Port Group 1: Buffer Overwrite: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P60: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P61: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P62: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P63: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P64: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P65: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P66: Disabled
+      ELC Input Port Group 1: Buffer Initial Value: P67: Disabled
+      ELC Input Port Group 2: Trigger Source: Disabled
+      ELC Input Port Group 2: Event Link Control: Disabled
+      ELC Input Port Group 2: Port Selection: 
+      ELC Input Port Group 2: Edge Detection: Disabled
+      ELC Input Port Group 2: Buffer Overwrite: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P80: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P81: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P82: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P83: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P84: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P85: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P86: Disabled
+      ELC Input Port Group 2: Buffer Initial Value: P87: Disabled
+      ELC Single Port 0: Common: Event Link Control: Disabled
+      ELC Single Port 0: Common: Event Direction: Disabled
+      ELC Single Port 0: Common: Port selection: Disabled
+      ELC Single Port 0: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 0: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 0: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 1: Common: Event Link Control: Disabled
+      ELC Single Port 1: Common: Event Direction: Disabled
+      ELC Single Port 1: Common: Port selection: Disabled
+      ELC Single Port 1: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 1: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 1: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 2: Common: Event Link Control: Disabled
+      ELC Single Port 2: Common: Event Direction: Disabled
+      ELC Single Port 2: Common: Port selection: Disabled
+      ELC Single Port 2: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 2: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 2: Input Direction Setting: Edge Detection: Disabled
+      ELC Single Port 3: Common: Event Link Control: Disabled
+      ELC Single Port 3: Common: Event Direction: Disabled
+      ELC Single Port 3: Common: Port selection: Disabled
+      ELC Single Port 3: Output Direction Setting: Trigger Source: Disabled
+      ELC Single Port 3: Output Direction Setting: Output Operation: Disabled
+      ELC Single Port 3: Input Direction Setting: Edge Detection: Disabled
       
-    Instance "g_qspi0 QSPI (r_xspi_qspi)"
+    Instance "g_qspi0 QSPI Flash (r_xspi_qspi)"
       General: Name: g_qspi0
       General: unit: 0
       General: Chip Select: Chip Select 0
       General: SPI Protocol: 1S-1S-1S
       General: Address Bytes: 3
       General: Dummy Clocks for Read: 0
-      General: Prefetch Function: Enable
       Command Definitions: Page Program Command: 0x02
       Command Definitions: Read Command: 0x03
       Command Definitions: Write Enable Command: 0x06
@@ -820,6 +881,10 @@ FSP Configuration
       General: Channel: 7
       General: Mode: Periodic
       General: Period: 100
+      General: Compare Match: Compare Match A: Status: Disabled
+      General: Compare Match: Compare Match A: Compare match value: 0
+      General: Compare Match: Compare Match B: Status: Disabled
+      General: Compare Match: Compare Match B: Compare match value: 0
       General: Period Unit: Milliseconds
       Output: Custom Waveform: GTIOA: Initial Output Level: Pin Level Low
       Output: Custom Waveform: GTIOA: Cycle End Output Level: Pin Level Retain
@@ -834,9 +899,11 @@ FSP Configuration
       Output: GTIOCA Output Enabled: True
       Output: GTIOCA Stop Level: Pin Level Low
       Output: GTIOCB Output Enabled: True
-      Output: GTIOCB Stop Level: Pin Level Low
-      Input: Count Up Source: 
-      Input: Count Down Source: 
+      Output: GTIOCB Stop Level: Pin Level High
+      Input: Count Mode: Phase Count: Phase Count Setting Automatically Enable: Disabled
+      Input: Count Mode: Phase Count: Phase Counting Mode: Mode1
+      Input: Count Mode: Event Count: Count Up Source: 
+      Input: Count Mode: Event Count: Count Down Source: 
       Input: Start Source: 
       Input: Stop Source: 
       Input: Clear Source: 
@@ -847,12 +914,14 @@ FSP Configuration
       Interrupts: Callback: NULL
       Interrupts: Overflow/Crest Interrupt Enable: Disabled
       Interrupts: Overflow/Crest Interrupt Priority: 4
-      Interrupts: Capture A Interrupt Enable: Disabled
-      Interrupts: Capture A Interrupt Priority: 4
-      Interrupts: Capture B Interrupt Enable: Disabled
+      Interrupts: Capture/Compare match A Interrupt Enable: Disabled
+      Interrupts: Capture/Compare match A Interrupt Priority: 4
+      Interrupts: Capture/Compare match B Interrupt Enable: Disabled
       Interrupts: Capture B Interrupt Priority: 4
       Interrupts: Underflow/Trough Interrupt Enable: Disabled
       Interrupts: Underflow/Trough Interrupt Priority: 4
+      Interrupts: Dead Time Error Interrupt Enable: Disabled
+      Interrupts: Dead Time Error Interrupt Priority: 4
       Extra Features: Extra Features: Disabled
       Extra Features: Output Disable: POEG Link: POEG Channel 0
       Extra Features: Output Disable: Output Disable POEG Trigger: 
@@ -866,12 +935,24 @@ FSP Configuration
       Extra Features: Interrupt Skipping: Skip ADC Events: None
       Extra Features: Output Disable: GTIOCA Disable Setting: Disable Prohibited
       Extra Features: Output Disable: GTIOCB Disable Setting: Disable Prohibited
+      Extra Features: Extended Interrupt Skipping 1: Interrupt to Count: None
+      Extra Features: Extended Interrupt Skipping 1: Interrupt Skip Count: 0
+      Extra Features: Extended Interrupt Skipping 2: Interrupt to Count: None
+      Extra Features: Extended Interrupt Skipping 2: Interrupt Skip Count: 0
+      Extra Features: Input Capture Interrupt Extended Skipping Function: Overflow Interrupt: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: Underflow Interrupt: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: GTADTRA A/D Converter Start Request: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: GTADTRB A/D Converter Start Request: None
       
     Instance "g_timer_pwm Timer, General PWM (r_gpt)"
       General: Name: g_timer_pwm
       General: Channel: 7
-      General: Mode: PWM
+      General: Mode: Saw-wave PWM
       General: Period: 100
+      General: Compare Match: Compare Match A: Status: Disabled
+      General: Compare Match: Compare Match A: Compare match value: 0
+      General: Compare Match: Compare Match B: Status: Disabled
+      General: Compare Match: Compare Match B: Compare match value: 0
       General: Period Unit: Milliseconds
       Output: Custom Waveform: GTIOA: Initial Output Level: Pin Level Low
       Output: Custom Waveform: GTIOA: Cycle End Output Level: Pin Level Retain
@@ -886,9 +967,11 @@ FSP Configuration
       Output: GTIOCA Output Enabled: False
       Output: GTIOCA Stop Level: Pin Level Low
       Output: GTIOCB Output Enabled: True
-      Output: GTIOCB Stop Level: Pin Level Low
-      Input: Count Up Source: 
-      Input: Count Down Source: 
+      Output: GTIOCB Stop Level: Pin Level High
+      Input: Count Mode: Phase Count: Phase Count Setting Automatically Enable: Disabled
+      Input: Count Mode: Phase Count: Phase Counting Mode: Mode1
+      Input: Count Mode: Event Count: Count Up Source: 
+      Input: Count Mode: Event Count: Count Down Source: 
       Input: Start Source: 
       Input: Stop Source: 
       Input: Clear Source: 
@@ -899,12 +982,14 @@ FSP Configuration
       Interrupts: Callback: NULL
       Interrupts: Overflow/Crest Interrupt Enable: Disabled
       Interrupts: Overflow/Crest Interrupt Priority: 4
-      Interrupts: Capture A Interrupt Enable: Disabled
-      Interrupts: Capture A Interrupt Priority: 4
-      Interrupts: Capture B Interrupt Enable: Disabled
+      Interrupts: Capture/Compare match A Interrupt Enable: Disabled
+      Interrupts: Capture/Compare match A Interrupt Priority: 4
+      Interrupts: Capture/Compare match B Interrupt Enable: Disabled
       Interrupts: Capture B Interrupt Priority: 4
       Interrupts: Underflow/Trough Interrupt Enable: Disabled
       Interrupts: Underflow/Trough Interrupt Priority: 4
+      Interrupts: Dead Time Error Interrupt Enable: Disabled
+      Interrupts: Dead Time Error Interrupt Priority: 4
       Extra Features: Extra Features: Disabled
       Extra Features: Output Disable: POEG Link: POEG Channel 0
       Extra Features: Output Disable: Output Disable POEG Trigger: 
@@ -918,12 +1003,24 @@ FSP Configuration
       Extra Features: Interrupt Skipping: Skip ADC Events: None
       Extra Features: Output Disable: GTIOCA Disable Setting: Disable Prohibited
       Extra Features: Output Disable: GTIOCB Disable Setting: Disable Prohibited
+      Extra Features: Extended Interrupt Skipping 1: Interrupt to Count: None
+      Extra Features: Extended Interrupt Skipping 1: Interrupt Skip Count: 0
+      Extra Features: Extended Interrupt Skipping 2: Interrupt to Count: None
+      Extra Features: Extended Interrupt Skipping 2: Interrupt Skip Count: 0
+      Extra Features: Input Capture Interrupt Extended Skipping Function: Overflow Interrupt: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: Underflow Interrupt: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: GTADTRA A/D Converter Start Request: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: GTADTRB A/D Converter Start Request: None
       
     Instance "g_timer_one_shot_mode Timer, General PWM (r_gpt)"
       General: Name: g_timer_one_shot_mode
       General: Channel: 7
       General: Mode: One-Shot
       General: Period: 100
+      General: Compare Match: Compare Match A: Status: Disabled
+      General: Compare Match: Compare Match A: Compare match value: 0
+      General: Compare Match: Compare Match B: Status: Disabled
+      General: Compare Match: Compare Match B: Compare match value: 0
       General: Period Unit: Milliseconds
       Output: Custom Waveform: GTIOA: Initial Output Level: Pin Level Low
       Output: Custom Waveform: GTIOA: Cycle End Output Level: Pin Level Retain
@@ -938,9 +1035,11 @@ FSP Configuration
       Output: GTIOCA Output Enabled: True
       Output: GTIOCA Stop Level: Pin Level Low
       Output: GTIOCB Output Enabled: True
-      Output: GTIOCB Stop Level: Pin Level Low
-      Input: Count Up Source: 
-      Input: Count Down Source: 
+      Output: GTIOCB Stop Level: Pin Level High
+      Input: Count Mode: Phase Count: Phase Count Setting Automatically Enable: Disabled
+      Input: Count Mode: Phase Count: Phase Counting Mode: Mode1
+      Input: Count Mode: Event Count: Count Up Source: 
+      Input: Count Mode: Event Count: Count Down Source: 
       Input: Start Source: 
       Input: Stop Source: 
       Input: Clear Source: 
@@ -951,12 +1050,14 @@ FSP Configuration
       Interrupts: Callback: user_gpt_one_shot_callback
       Interrupts: Overflow/Crest Interrupt Enable: Enabled
       Interrupts: Overflow/Crest Interrupt Priority: 4
-      Interrupts: Capture A Interrupt Enable: Disabled
-      Interrupts: Capture A Interrupt Priority: 4
-      Interrupts: Capture B Interrupt Enable: Disabled
+      Interrupts: Capture/Compare match A Interrupt Enable: Disabled
+      Interrupts: Capture/Compare match A Interrupt Priority: 4
+      Interrupts: Capture/Compare match B Interrupt Enable: Disabled
       Interrupts: Capture B Interrupt Priority: 4
       Interrupts: Underflow/Trough Interrupt Enable: Disabled
       Interrupts: Underflow/Trough Interrupt Priority: 4
+      Interrupts: Dead Time Error Interrupt Enable: Disabled
+      Interrupts: Dead Time Error Interrupt Priority: 4
       Extra Features: Extra Features: Disabled
       Extra Features: Output Disable: POEG Link: POEG Channel 0
       Extra Features: Output Disable: Output Disable POEG Trigger: 
@@ -970,4 +1071,12 @@ FSP Configuration
       Extra Features: Interrupt Skipping: Skip ADC Events: None
       Extra Features: Output Disable: GTIOCA Disable Setting: Disable Prohibited
       Extra Features: Output Disable: GTIOCB Disable Setting: Disable Prohibited
+      Extra Features: Extended Interrupt Skipping 1: Interrupt to Count: None
+      Extra Features: Extended Interrupt Skipping 1: Interrupt Skip Count: 0
+      Extra Features: Extended Interrupt Skipping 2: Interrupt to Count: None
+      Extra Features: Extended Interrupt Skipping 2: Interrupt Skip Count: 0
+      Extra Features: Input Capture Interrupt Extended Skipping Function: Overflow Interrupt: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: Underflow Interrupt: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: GTADTRA A/D Converter Start Request: None
+      Extra Features: Input Capture Interrupt Extended Skipping Function: GTADTRB A/D Converter Start Request: None
       

@@ -2,25 +2,11 @@
  * File Name    : i2c_sensor.c
  * Description  : Contains data structures and functions used in i2c_sensor.c.
  **********************************************************************************************************************/
-/***********************************************************************************************************************
- * Copyright 2023 Renesas Electronics Corporation and/or its affiliates.  All Rights Reserved.
- *
- * This software and documentation are supplied by Renesas Electronics Corporation and/or its affiliates and may only
- * be used with products of Renesas Electronics Corp. and its affiliates ("Renesas").  No other uses are authorized.
- * Renesas products are sold pursuant to Renesas terms and conditions of sale.  Purchasers are solely responsible for
- * the selection and use of Renesas products and Renesas assumes no liability.  No license, express or implied, to any
- * intellectual property right is granted by Renesas.  This software is protected under all applicable laws, including
- * copyright laws. Renesas reserves the right to change or discontinue this software and/or this documentation.
- * THE SOFTWARE AND DOCUMENTATION IS DELIVERED TO YOU "AS IS," AND RENESAS MAKES NO REPRESENTATIONS OR WARRANTIES, AND
- * TO THE FULLEST EXTENT PERMISSIBLE UNDER APPLICABLE LAW, DISCLAIMS ALL WARRANTIES, WHETHER EXPLICITLY OR IMPLICITLY,
- * INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT, WITH RESPECT TO THE
- * SOFTWARE OR DOCUMENTATION.  RENESAS SHALL HAVE NO LIABILITY ARISING OUT OF ANY SECURITY VULNERABILITY OR BREACH.
- * TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL RENESAS BE LIABLE TO YOU IN CONNECTION WITH THE SOFTWARE OR
- * DOCUMENTATION (OR ANY PERSON OR ENTITY CLAIMING RIGHTS DERIVED FROM YOU) FOR ANY LOSS, DAMAGES, OR CLAIMS WHATSOEVER,
- * INCLUDING, WITHOUT LIMITATION, ANY DIRECT, CONSEQUENTIAL, SPECIAL, INDIRECT, PUNITIVE, OR INCIDENTAL DAMAGES; ANY
- * LOST PROFITS, OTHER ECONOMIC DAMAGE, PROPERTY DAMAGE, OR PERSONAL INJURY; AND EVEN IF RENESAS HAS BEEN ADVISED OF THE
- * POSSIBILITY OF SUCH LOSS, DAMAGES, CLAIMS OR COSTS.
- **********************************************************************************************************************/
+/*
+ * Copyright (c) 2023 Renesas Electronics Corporation and/or its affiliates
+ * 
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
 
 #include "common_utils.h"
 #include "i2c_sensor.h"
@@ -35,7 +21,7 @@
 /*
  * Global Variables
  */
-/* Reading I2C call back event through i2c_Master callback */
+/* Reading i2c call back event through i2c_master callback */
 static volatile i2c_master_event_t i2c_event = I2C_MASTER_EVENT_ABORTED;
 
 /*
@@ -45,7 +31,7 @@ static fsp_err_t get_device_id(uint8_t *dev_id);
 static fsp_err_t validate_i2c_event(void);
 
 /*******************************************************************************************************************//**
- *  @brief       initialize IIC master module and set up PMOD ACL sensor
+ *  @brief       initialize riic master module and set up PMOD ACL sensor
  *  @param[IN]   None
  *  @retval      FSP_SUCCESS                  Upon successful open and start of timer
  *  @retval      Any Other Error code apart from FSP_SUCCESS is  Unsuccessful open or start
@@ -56,8 +42,9 @@ fsp_err_t init_sensor(void)
     fsp_err_t err     = FSP_SUCCESS;
     uint8_t measure_enable_payload[MEASURE_PAYLOAD_SIZE] = { POWER_CTL_REG, ENABLE_BIT };
 
-    /* opening IIC master module */
+    /* opening riic master module */
     err = R_RIIC_MASTER_Open(&g_i2c_master_ctrl, &g_i2c_master_cfg);
+
     /* handle error */
     if (FSP_SUCCESS != err)
     {
@@ -76,12 +63,14 @@ fsp_err_t init_sensor(void)
         if (FSP_SUCCESS == err)
         {
             err = validate_i2c_event();
+
             /* handle error */
             if(FSP_ERR_TRANSFER_ABORTED == err)
             {
                 APP_ERR_PRINT("** POWER_CTL reg I2C write failed!!! ** \r\n");
             }
         }
+
         /* handle error */
         else
         {
@@ -89,6 +78,7 @@ fsp_err_t init_sensor(void)
             APP_ERR_PRINT("** R_RIIC_MASTER_Write API failed ** \r\n");
         }
     }
+
     /* handle error */
     else
     {
@@ -100,7 +90,7 @@ fsp_err_t init_sensor(void)
 
 
 /*******************************************************************************************************************//**
- *  @brief       DeInitialize IIC master module
+ *  @brief       DeInitialize riic master module
  *  @param[IN]   None
  *  @retval      None
  **********************************************************************************************************************/
@@ -135,8 +125,10 @@ fsp_err_t read_sensor_data(uint8_t *xyz_data)
         APP_ERR_PRINT("** NULL Pointer check fail ** \r\n");
         return err;
     }
+
     /* Write Accelerometer Data register   */
     err = R_RIIC_MASTER_Write(&g_i2c_master_ctrl, &internal_reg, ONE_BYTE, true);
+
     /* handle error */
     if (FSP_SUCCESS != err)
     {
@@ -151,6 +143,7 @@ fsp_err_t read_sensor_data(uint8_t *xyz_data)
         if (FSP_SUCCESS == err)
         {
             err = R_RIIC_MASTER_Read(&g_i2c_master_ctrl, &adxl_data[0], DATA_REGISTERS, false);
+
             /* handle error */
             if (FSP_SUCCESS != err)
             {
@@ -206,6 +199,7 @@ static fsp_err_t get_device_id(uint8_t *dev_id)
 
     /* Send register address to sensor */
     err = R_RIIC_MASTER_Write(&g_i2c_master_ctrl, &reg_address, ONE_BYTE, true);
+
     /* handle error */
     if (FSP_SUCCESS != err)
     {
@@ -214,6 +208,7 @@ static fsp_err_t get_device_id(uint8_t *dev_id)
     else
     {
         err = validate_i2c_event();
+
         /* handle error */
         if(FSP_ERR_TRANSFER_ABORTED == err)
         {
@@ -223,6 +218,7 @@ static fsp_err_t get_device_id(uint8_t *dev_id)
         {
             /* Read only when I2C write and its callback event is successful */
             err  = R_RIIC_MASTER_Read(&g_i2c_master_ctrl, dev_id, ONE_BYTE, false);
+
             /* handle error */
             if (FSP_SUCCESS != err)
             {
@@ -232,6 +228,7 @@ static fsp_err_t get_device_id(uint8_t *dev_id)
             else
             {
                 err = validate_i2c_event();
+                
                 /* handle error */
                 if(FSP_ERR_TRANSFER_ABORTED == err)
                 {
